@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="秦宇 - 软件测试工程师 | 半导体芯片测试机上位机 · 黑盒 + UI 自动化 | AI 应用测试 · 接口自动化 · 1000+ 用例 · 50+ API 巡检 · 随时到岗">
+<meta name="author" content="秦宇">
+<meta name="theme-color" content="#f6f4ef">
+<title>秦宇 · 测试工程师 — 个人简历</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e4fd8'/%3E%3Ctext x='50' y='70' font-size='54' text-anchor='middle' fill='%23fff' font-family='serif' font-weight='bold'%3E秦%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======== 粒子背景 ======== -->
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- ======== 导航栏 ======== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">秦宇<span class="brand-sep">·</span><span class="brand-role">测试工程师</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#about" class="nav-link">关于我</a>
+      <a href="#skills" class="nav-link">技能</a>
+      <a href="#experience" class="nav-link">经历</a>
+      <a href="#projects" class="nav-link">项目</a>
+      <a href="#education" class="nav-link">教育</a>
+      <a href="#contact" class="nav-link">联系</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-solid btn-sm" href="assets/秦宇-测试工程师.pdf" download>下载简历 PDF</a>
+      <button class="nav-burger" id="navBurger" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======== 首屏 ======== -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-main reveal">
+      <p class="hero-kicker">求职意向：软件测试工程师 · 期望城市：深圳 · 期望薪资 15-20K</p>
+      <h1 class="hero-name">秦宇</h1>
+      <p class="hero-role"><span id="typed"></span><span class="caret" aria-hidden="true">|</span></p>
+      <p class="hero-intro">软件工程本科，一年测试经验，目前在半导体芯片测试机上市公司负责上位机软件测试（黑盒测试 + UI 自动化）。<strong>接口、自动化和 AI 应用测试</strong>均可独立负责，擅长结合接口返回、SQL 与日志定位问题，熟悉从需求评审到版本上线的完整测试流程。</p>
+      <p class="hero-meta">
+        <span>男</span><i>·</i><span>22 岁</span><i>·</i><span>1 年工作经验</span><i>·</i><span>可随时到岗</span>
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="assets/秦宇-测试工程师.pdf" download>下载简历 PDF ↓</a>
+        <a class="btn btn-text" href="#contact">直接联系我</a>
+      </div>
+    </div>
+
+    <!-- 个人档案卡（HR 一眼看全基本信息） -->
+    <aside class="profile-card reveal" aria-label="个人信息档案">
+      <div class="profile-head">
+        <span class="profile-name">秦 宇</span>
+        <span class="profile-en">QIN YU</span>
+      </div>
+      <dl class="profile-list">
+        <div><dt>求职意向</dt><dd>软件测试工程师</dd></div>
+        <div><dt>工作经验</dt><dd>1 年（上市公司）</dd></div>
+        <div><dt>期望城市</dt><dd>深圳</dd></div>
+        <div><dt>期望薪资</dt><dd>15 - 20K</dd></div>
+        <div><dt>联系电话</dt><dd>18662732817</dd></div>
+        <div><dt>电子邮箱</dt><dd>1642732247@qq.com</dd></div>
+        <div><dt>教育背景</dt><dd>本科 · 软件工程</dd></div>
+      </dl>
+      <div class="profile-foot">
+        <span class="stamp">可随时到岗</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 关键成果：数字第一，先看成绩 -->
+  <div class="stats reveal">
+    <div class="stat">
+      <span class="stat-num" data-count="1000" data-suffix="+">0</span>
+      <span class="stat-label">独立设计与执行的功能 / 接口 / 回归用例</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-count="50" data-suffix="+">0</span>
+      <span class="stat-label">核心 API 自动巡检：定时执行、异常钉钉告警</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-count="10" data-suffix="+">0</span>
+      <span class="stat-label">企业站点测试环境搭建与现场设备联调</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-count="4" data-suffix="">0</span>
+      <span class="stat-label">产品线独立测试：智能体 · 低代码平台等</span>
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#about" aria-label="向下滚动">
+    <span>继续往下看</span><span class="scroll-line"></span>
+  </a>
+</section>
+
+<!-- ======== 个人优势 ======== -->
+<section class="section" id="about">
+  <header class="section-head reveal">
+    <p class="section-tag">01</p>
+    <h2 class="section-title">关于我</h2>
+  </header>
+  <div class="about-grid">
+    <article class="about-card reveal">
+      <span class="about-no">01</span>
+      <h3>风险驱动的测试设计</h3>
+      <p>以风险拆解驱动用例设计：综合运用等价类、边界值、场景法、状态迁移等方法，覆盖权限、异常、兼容性与回归场景。独立完成用例设计与执行，跟进缺陷直至修复验证通过，输出完整测试报告。</p>
+    </article>
+    <article class="about-card reveal">
+      <span class="about-no">02</span>
+      <h3>AI 应用测试</h3>
+      <p>在 <span class="hl">LLM-to-SQL、Agent Workflow、Skill / Tool Calling</span> 三个方向开展专项测试：验证意图识别、工具选择、参数提取、SQL 结果与业务口径一致性，输出 Badcase 记录与 Prompt 偏差分析。</p>
+    </article>
+    <article class="about-card reveal">
+      <span class="about-no">03</span>
+      <h3>自动化与巡检</h3>
+      <p>使用 Python + Pytest 编写接口、页面流程与数据校验脚本，基于 Playwright 实现 UI 自动化；<span class="hl">50+ 核心 API</span> 接入 MeterSphere 定时巡检，异常自动触发钉钉告警，持续维护回归基线。</p>
+    </article>
+    <article class="about-card reveal">
+      <span class="about-no">04</span>
+      <h3>交叉验证与问题定位</h3>
+      <p>通过接口返回、SQL 结果、页面展示与业务规则交叉验证定位问题；结合 Linux 日志、服务状态与接口响应排查环境异常。能够区分产品缺陷、数据异常与环境阻塞，先分类再定位。</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======== 专业技能 ======== -->
+<section class="section section-alt" id="skills">
+  <header class="section-head reveal">
+    <p class="section-tag">02</p>
+    <h2 class="section-title">专业技能</h2>
+  </header>
+  <div class="skills-grid">
+    <article class="skill-card reveal">
+      <header class="skill-head">
+        <span class="skill-no">01</span>
+        <h3>自动化与接口测试</h3>
+        <span class="skill-level">熟练</span>
+      </header>
+      <ul class="skill-tags">
+        <li class="skill-tag">Python</li>
+        <li class="skill-tag">Pytest</li>
+        <li class="skill-tag">Playwright</li>
+        <li class="skill-tag">Selenium</li>
+        <li class="skill-tag">Postman</li>
+        <li class="skill-tag">Apipost</li>
+        <li class="skill-tag">MeterSphere</li>
+        <li class="skill-tag">JMeter</li>
+      </ul>
+      <p class="skill-note">可独立编写接口、页面流程与数据校验脚本；基于 MeterSphere 配置定时巡检，异常自动触发钉钉告警。</p>
+    </article>
+
+    <article class="skill-card reveal">
+      <header class="skill-head">
+        <span class="skill-no">02</span>
+        <h3>数据与环境</h3>
+        <span class="skill-level skill-level-mid">掌握</span>
+      </header>
+      <ul class="skill-tags">
+        <li class="skill-tag">MySQL</li>
+        <li class="skill-tag">Redis</li>
+        <li class="skill-tag">Linux</li>
+        <li class="skill-tag">Git</li>
+        <li class="skill-tag">Jenkins</li>
+        <li class="skill-tag">HTTP / HTTPS</li>
+        <li class="skill-tag">Appium（了解）</li>
+      </ul>
+      <p class="skill-note">熟练进行测试数据构造、SQL 核对、日志与服务状态排查，能够区分环境问题与产品缺陷。</p>
+    </article>
+
+    <article class="skill-card reveal">
+      <header class="skill-head">
+        <span class="skill-no">03</span>
+        <h3>测试方法</h3>
+        <span class="skill-level">熟练</span>
+      </header>
+      <ul class="skill-tags">
+        <li class="skill-tag">需求分析</li>
+        <li class="skill-tag">测试计划</li>
+        <li class="skill-tag">等价类 / 边界值</li>
+        <li class="skill-tag">场景法</li>
+        <li class="skill-tag">状态迁移</li>
+        <li class="skill-tag">权限 / 异常 / 兼容性</li>
+        <li class="skill-tag">回归策略</li>
+      </ul>
+      <p class="skill-note">基于风险分析设计用例，权限、异常、兼容性场景全覆盖，持续维护回归基线。</p>
+    </article>
+
+    <article class="skill-card reveal">
+      <header class="skill-head">
+        <span class="skill-no">04</span>
+        <h3>AI 应用测试</h3>
+        <span class="skill-level skill-level-special">专项</span>
+      </header>
+      <ul class="skill-tags">
+        <li class="skill-tag">意图识别</li>
+        <li class="skill-tag">工具选择</li>
+        <li class="skill-tag">参数提取</li>
+        <li class="skill-tag">SQL 结果校验</li>
+        <li class="skill-tag">业务口径一致性</li>
+        <li class="skill-tag">Prompt 偏差分析</li>
+        <li class="skill-tag">Badcase 沉淀</li>
+      </ul>
+      <p class="skill-note">覆盖 LLM-to-SQL、Agent Workflow、Skill / Tool Calling 三个方向，整理 Badcase 记录与 Prompt 偏差分析方法。</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======== 工作与实习经历 ======== -->
+<section class="section" id="experience">
+  <header class="section-head reveal">
+    <p class="section-tag">03</p>
+    <h2 class="section-title">工作与实习经历</h2>
+  </header>
+  <div class="timeline" id="timeline">
+
+    <article class="tl-item reveal">
+      <div class="tl-rail"><span class="tl-year">2026.07<br>至今</span><span class="tl-line"></span></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <h3>长川科技股份有限公司 <span class="tl-role">软件测试</span></h3>
+          <span class="tl-badge">在职</span>
+        </div>
+        <p class="tl-desc">半导体芯片测试机上位机软件 · 车规级功放芯片 / 功耗芯片测试 · 上市公司</p>
+        <ul class="tl-list">
+          <li><strong>需求评估与计划：</strong>按功能、性能、接口、兼容性四类风险拆测试范围，出执行计划与发布前验证清单，测试左移至需求评审阶段。</li>
+          <li><strong>黑盒用例与 UI 自动化：</strong>上位机软件按黑盒方法设计用例，功能路径、权限、异常输入、边界数据逐条覆盖；搭建界面 UI 自动化，实现主流程与核心操作路径自动回归。</li>
+          <li><strong>设备通信接口：</strong>上位机与测控单元的指令下发、参数配置、数据采集、状态回传逐项验证，异常响应和链路状态变化单列场景。</li>
+          <li><strong>稳定性与性能：</strong>组织长时间连续运行压力测试，监测资源占用、响应延迟与运行状态，记录异常现象并分析稳定性风险。</li>
+          <li><strong>流程与交付：</strong>需求评审、用例评审、缺陷跟踪、发布前验证各环节按规范流程执行并留痕；兼容矩阵、版本回归与测试报告归档，交付过程有据可查。</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="tl-item reveal">
+      <div class="tl-rail"><span class="tl-year">2025.09<br>2026.06</span><span class="tl-line"></span></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <h3>北京零壹视界科技有限公司 <span class="tl-role">测试开发</span></h3>
+        </div>
+        <p class="tl-desc">AI 智能体与低代码平台 · 覆盖数据智能体 / 企业写作智能体 / 低代码平台 / 智能体开发平台</p>
+        <ul class="tl-list">
+          <li><strong>用例体系：</strong>独立设计并执行 <span class="hl">1000+ 条</span>功能、接口和回归用例，覆盖四条产品线，回归基线持续维护。</li>
+          <li><strong>权限与异常分支：</strong>多租户、多角色权限模块的授权边界、数据隔离、模块联动、异常分支逐条设计场景。</li>
+          <li><strong>API 巡检：</strong>基于 MeterSphere 搭建 <span class="hl">50+ 核心 API</span> 自动巡检，动态参数、断言、定时任务、钉钉告警配齐，接口回归无需人工值守。</li>
+          <li><strong>AI 链路定位：</strong>验证意图识别、工具选择、参数提取、调用链路和异常重试；接口 + SQL + 业务规则 + 人工复核四路对照，定位模型输出偏差、工具调用失败和数据口径不一致。</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="tl-item reveal">
+      <div class="tl-rail"><span class="tl-year">2025.07<br>2025.09</span><span class="tl-line"></span></div>
+      <div class="tl-body">
+        <div class="tl-head">
+          <h3>湖南展通佳创能源有限公司 <span class="tl-role">软件测试 · 实习</span></h3>
+        </div>
+        <p class="tl-desc">燃气企业数字化系统 · 覆盖管理端 / 配送端 / 用户端</p>
+        <ul class="tl-list">
+          <li><strong>业务梳理：</strong>逐项梳理订单处理、配送调度、客户资料、安检巡检、设备联动、数据统计等业务问题，转化为可验证的需求与测试范围。</li>
+          <li><strong>方案与用例：</strong>参与订单流转、客户管理、派单调度、权限管理、状态更新、多端协同的方案设计，管理端、配送端、用户端关键链路全覆盖。</li>
+          <li><strong>现场交付：</strong>完成 <span class="hl">10+ 企业站点</span>测试环境搭建，摄像头、分机、AI 盒子现场联调；独立整理验收材料、问题清单、功能说明与交付记录，跟进问题直至闭环。</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ======== 项目经历 ======== -->
+<section class="section section-alt" id="projects">
+  <header class="section-head reveal">
+    <p class="section-tag">04</p>
+    <h2 class="section-title">项目经历</h2>
+  </header>
+  <div class="projects-grid">
+
+    <article class="project-card project-featured reveal">
+      <div class="project-head">
+        <div>
+          <p class="project-meta"><span class="project-no">01</span><span class="project-period">2026.07 — 至今</span></p>
+          <h3>车规级芯片测试机上位机软件 <span class="project-role">软件测试</span></h3>
+        </div>
+      </div>
+      <p class="project-desc">半导体芯片测试机（ATE）的上位机软件，产品面向车规级功放芯片、功耗芯片的自动化测试。负责上位机的黑盒测试与 UI 自动化，测试流程遵循公司标准研发规范。</p>
+      <ul class="project-list">
+        <li><strong>黑盒测试：</strong>功能路径、权限、异常输入、边界数据逐条设计用例，指令下发、参数配置、数据采集、状态回传等核心路径优先覆盖。</li>
+        <li><strong>UI 自动化：</strong>搭建上位机界面自动化，主流程与核心操作路径自动回归，支撑版本迭代后的快速验证。</li>
+        <li><strong>稳定性与兼容：</strong>长时间连续运行压力测试，监测资源占用与响应延迟；按 OS × 硬件配置搭建兼容矩阵，版本回归加发布前检查。</li>
+        <li><strong>流程与交付：</strong>需求评审、用例评审、缺陷跟踪、发布前验证环节留痕；测试记录、问题清单、测试报告归档，交付有据可查。</li>
+      </ul>
+      <p class="project-tags">ATE · 上位机 · 车规级芯片 · 黑盒测试 · UI 自动化</p>
+    </article>
+
+    <article class="project-card project-featured reveal">
+      <div class="project-head">
+        <div>
+          <p class="project-meta"><span class="project-no">02</span><span class="project-period">2026.03 — 至今</span></p>
+          <h3>星点评 AI 工具平台 <span class="project-role">测试开发</span></h3>
+        </div>
+      </div>
+      <p class="project-desc">AI 工具导航与推荐平台：检索、分类筛选、详情展示、榜单推荐、登录注册、数据导入。我负责测试设计与自动化。</p>
+      <ul class="project-list">
+        <li>按模块拆解业务风险：检索、筛选、详情、榜单、登录、导入，<strong>边界、空数据、异常输入、权限状态</strong>单列场景，核心路径全覆盖。</li>
+        <li><strong>Playwright</strong> 执行登录注册、检索、筛选、详情主流程自动化，<strong>Pytest</strong> 校验接口，页面行为与接口返回逐项比对。</li>
+        <li><strong>Cookie + Session 登录态</strong>单独测：登录、未登录、过期三种状态下的访问控制；<strong>MySQL</strong> 核对导入数据、工具信息、标签和推荐结果。</li>
+        <li>借助 <strong>LLM 生成用例初稿、接口脚本与异常数据</strong>，结合业务规则人工复核，检查生成内容的可执行性、覆盖缺口与结果偏差。</li>
+      </ul>
+      <p class="project-tags">Playwright · Pytest · MySQL · Cookie/Session · LLM 辅助用例生成</p>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-head">
+        <div>
+          <p class="project-meta"><span class="project-no">03</span><span class="project-period">2026.05 — 2026.06</span></p>
+          <h3>数字分身小程序自动化 <span class="project-role">测试开发</span></h3>
+        </div>
+      </div>
+      <p class="project-desc">给数字分身小程序搭真实 UI 自动化：接入微信开发者工具自动化端口，覆盖冒烟、核心流程和协议文案回归。</p>
+      <ul class="project-list">
+        <li>Python 解析 <code>dist/app.json</code>，以 auto 模式执行 Pytest，覆盖注册激活、Tab 导航、旅行入口、供需档案、数字档案、账号设置全流程。</li>
+        <li>针对元素定位易变的问题优化定位策略，以<strong>重试机制</strong>应对自动化端口不稳定；参数管理与执行逻辑分离，避免多环境配置冲突。</li>
+        <li>缺陷报告自动生成：<strong>截图、JUnit、HTML、Markdown</strong>，严重级别、复现步骤、期望与实际、修复建议齐全，区分产品缺陷与环境阻塞问题。</li>
+      </ul>
+      <p class="project-tags">微信小程序 · UI 自动化 · Python · Pytest</p>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-head">
+        <div>
+          <p class="project-meta"><span class="project-no">04</span><span class="project-period">2025.10 — 2026.01</span></p>
+          <h3>CICC 中金点睛 <span class="project-role">测试开发工程师</span></h3>
+        </div>
+      </div>
+      <p class="project-desc">企业数据分析：自然语言提问生成数据查询，含智能问答、Text-to-SQL、数据报表、权限控制、数据展示。</p>
+      <ul class="project-list">
+        <li>正常、异常、边界、无权限、空结果、口径不一致六类场景全覆盖。</li>
+        <li>Text-to-SQL 五维验证：用户问题、SQL 生成、查询结果、页面展示、业务口径逐项核对，定位模型输出与真实需求的偏差。</li>
+        <li><strong>Postman、MeterSphere</strong> 验证接口参数、返回结构、状态码、异常提示、权限控制；<strong>SQL 核对</strong> AI 返回与真实业务数据的一致性；缺陷从复现、提交到回归全程跟进。</li>
+      </ul>
+      <p class="project-tags">Text-to-SQL · Postman · MeterSphere · SQL 核对</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ======== 教育 / 荣誉 / 证书 ======== -->
+<section class="section" id="education">
+  <header class="section-head reveal">
+    <p class="section-tag">05</p>
+    <h2 class="section-title">教育 · 荣誉 · 证书</h2>
+  </header>
+  <div class="edu-grid">
+    <article class="edu-card reveal">
+      <span class="edu-no">01</span>
+      <h3>湖南涉外经济学院</h3>
+      <p class="edu-meta">本科 · 软件工程 · 2022 — 2026</p>
+      <p class="edu-desc">系统学习操作系统、数据库、软件测试及 Python 编程等核心课程，掌握面向对象开发思想与常用开发工具，具备独立完成功能模块开发的能力。</p>
+    </article>
+    <article class="edu-card reveal">
+      <span class="edu-no">02</span>
+      <h3>荣誉奖项</h3>
+      <ul class="honor-list">
+        <li>校级「优秀共青团员」荣誉称号</li>
+        <li>优秀学生干部</li>
+        <li>优秀志愿者</li>
+        <li>优秀社会实践</li>
+      </ul>
+    </article>
+    <article class="edu-card reveal">
+      <span class="edu-no">03</span>
+      <h3>资格证书</h3>
+      <ul class="honor-list">
+        <li>驾驶证 C1</li>
+        <li>普通话二级乙等</li>
+        <li>大学英语四级 CET-4</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ======== 联系 ======== -->
+<section class="section" id="contact">
+  <div class="contact-block reveal">
+    <p class="section-tag">06</p>
+    <h2 class="section-title">联系我</h2>
+    <p class="contact-desc">正在寻找深圳地区测试工程师 / 测试开发岗位，欢迎随时联系；简历可直接下载。</p>
+    <div class="contact-row">
+      <a class="contact-item" href="tel:18662732817">
+        <span class="contact-label">电话</span>
+        <span class="contact-value">18662732817</span>
+      </a>
+      <a class="contact-item" href="mailto:1642732247@qq.com">
+        <span class="contact-label">邮箱</span>
+        <span class="contact-value">1642732247@qq.com</span>
+      </a>
+      <a class="contact-item" href="assets/秦宇-测试工程师.pdf" download>
+        <span class="contact-label">简历</span>
+        <span class="contact-value">下载 PDF 版本 ↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>秦宇 · 测试工程师</p>
+  <p class="footer-sub">纯 HTML / CSS / JavaScript 搭建 · 可部署到 GitHub Pages</p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
