@@ -2,10 +2,12 @@
 
 基于 PDF 简历《秦宇-测试工程师.pdf》构建的个人简历单页网站。**纯 HTML / CSS / JavaScript 实现，零运行时依赖**，可直接双击打开，也可一键部署到 GitHub Pages。
 
-## ✨ 设计风格：中式编辑排版（面向中文读者）
+## ✨ 设计风格：黑白单色极简（风格提取自 [enderromantice.com](https://enderromantice.com)）
 
-- **白底墨黑**：白色背景（`#ffffff`）+ 1px 浅灰细线（`#e7e7e7`）分区，**工程蓝**（`#1e4fd8`）标色关键数字与术语，校对红（`#e5484d`）仅用于印章/专项徽章点缀
-- **中文优先**：正文黑体（PingFang / 微软雅黑）、宋体大标题，等宽字体（JetBrains Mono）用于日期、编号与坐标；无大写英文装饰
+布局骨架、间距、字号、导航与档案卡结构均从参考站提取（`--max 1120px`、Hero `0.92fr/1.08fr`、大标题 `clamp(52px,6.2vw,76px)` 等），并将彩色强调全部中和为单色：
+
+- **纯黑白灰**：白底（`#ffffff`）+ 墨黑正文（`#0a0a0a`）+ 1px 浅灰细线（`#e7e7e7`）分区，**无任何彩色强调**；关键数字用加粗代替标色（中文阅读习惯：加粗即强调）
+- **字体与参考站一致**：正文 Geist（中文回退 PingFang / 微软雅黑）、大标题 Cormorant Garamond（中文回退 Noto Serif SC 宋体）、等宽 Geist Mono 用于日期/编号/坐标
 - **信息前置**：首屏 = 求职定位 + 打字机角色标题 + 一句人话介绍 + 黑底反色档案卡（求职意向 / 经验 / 薪资 / 联系方式 / 坐标牌 + 旋转印章）
 - **关键成果数字条**：1000+ 用例 / 50+ API 巡检 / 10+ 站点 / 4 条产品线，滚入视口时数字递增
 - **标签化技能**：技能区用「分组 + 标签 + 熟练度徽章」呈现，HR 3 秒扫完关键词（不用自评百分比条）
@@ -60,9 +62,15 @@ python -m http.server 8080
 
 **本地更新后同步上线**：双击 `deploy.bat`（或在目录内执行 `.\deploy.ps1 "提交说明"`），脚本会自动提交并推送到 GitHub，Pages 在 1-2 分钟内自动更新，无需手动操作网页。
 
-## 🎨 参考项目（GitHub stars 均 ≥ 1000，经 GitHub API 验证）
+## 🎨 参考项目
 
-**简历 / 作品集模板（信息架构与排版参考）：**
+**风格直接对标站点（布局骨架与视觉语言来源）：**
+
+| 项目 | 借鉴点 |
+|---|---|
+| [enderromantice.com](https://enderromantice.com) | 黑白单色极简、Hero 网格、导航、Cormorant Garamond 大标题、黑底档案面板与坐标牌 |
+
+**简历 / 作品集模板（信息架构与排版参考，GitHub stars 均 ≥ 1000）：**
 
 | 项目 | Stars | 借鉴点 |
 |---|---|---|
@@ -89,7 +97,7 @@ python -m http.server 8080
 
 - **改内容**：编辑 `index.html` 中对应 section 的文本即可；PDF 简历改 `resume.html`，再用 Edge 无头模式重新生成：
   `msedge --headless=new --no-pdf-header-footer --print-to-pdf=assets/秦宇-测试工程师.pdf resume.html`
-- **改颜色**：修改 `css/style.css` 顶部 `:root` 中的设计变量（`--bg` 背景 / `--ink` 墨色 / `--accent` 强调色 / `--red` 印章红）。
+- **改颜色**：修改 `css/style.css` 顶部 `:root` 中的设计变量（`--bg` 背景 / `--ink` 墨色 / `--muted` 次要文字 / `--line` 细线 / `--panel` 黑底面板）。
 - **改技能标签**：在 `index.html` 的 `.skill-chips` 里增删 `<span>` 项即可，熟练度改 `.level` 徽章（`level-mid` / `level-special` 变体）。
 - **改关键数字**：调整 `.stat-num` 的 `data-count` 属性（数字动画目标值）与 `data-suffix`（后缀）。
 - **改打字机文案**：编辑 `js/main.js` 中 `roles` 数组即可。

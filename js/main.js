@@ -29,7 +29,7 @@
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
         r: Math.random() * 1.6 + 0.5,
-        c: Math.random() > 0.7 ? "30, 79, 216" : "124, 130, 145"  // 强调蓝 / 墨灰
+        c: Math.random() > 0.7 ? "10, 10, 10" : "107, 107, 107"  // 墨黑 / 墨灰
       });
     }
     if (!running) {
@@ -64,7 +64,7 @@
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = "rgba(30, 79, 216, " + (0.10 * (1 - dist / linkDist)).toFixed(3) + ")";
+          ctx.strokeStyle = "rgba(10, 10, 10, " + (0.10 * (1 - dist / linkDist)).toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -78,7 +78,7 @@
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = "rgba(30, 79, 216, " + (0.16 * (1 - md / 160)).toFixed(3) + ")";
+          ctx.strokeStyle = "rgba(10, 10, 10, " + (0.16 * (1 - md / 160)).toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.stroke();
         }

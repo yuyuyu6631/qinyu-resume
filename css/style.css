@@ -1,9 +1,8 @@
 /* ============================================================
    秦宇 · 测试工程师 — 个人简历网站
-   设计语言: 中式编辑排版（面向中文读者）
-   白底墨黑 · 1px 细线分区 · 宋体大标题 + 黑体正文 + 等宽标签
-   左侧文字 / 右侧黑底面板的 Hero · 无边框列表 · 标签式技能
-   强调色仅用于关键数字（中文阅读习惯：数字优先被扫到）
+   设计语言: 黑白单色极简（对标 enderromantice.com 风格提取）
+   白底墨黑 · 1px 细线分区 · Cormorant Garamond + 宋体大标题
+   Geist 正文 + Geist Mono 等宽 · 无彩色强调（中文阅读习惯：加粗即强调）
    ============================================================ */
 
 :root {
@@ -16,12 +15,10 @@
   --panel: #0a0a0a;
   --panel-ink: #fafafa;
   --panel-muted: #8a8a8a;
-  --accent: #1e4fd8;          /* 仅用于关键数字 / 链接 / 激活态 */
-  --red: #e5484d;             /* 印章 / 专项徽章 */
   --max: 1120px;
-  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Cascadia Code", Consolas, "Courier New", monospace;
+  --font-serif: "Cormorant Garamond", "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-sans: "Geist", "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", "Cascadia Code", Consolas, "Courier New", monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,7 +53,7 @@ code { font-family: var(--font-mono); font-size: 0.9em; background: #f2f2f2; pad
 
 .mono { font-family: var(--font-mono); }
 strong { color: var(--ink); font-weight: 700; }
-.hl { color: var(--accent); font-weight: 700; }   /* 关键数字标蓝 */
+.hl { color: var(--ink); font-weight: 700; }   /* 关键数字加粗强调（单色体系） */
 
 /* ---------- 导航 ---------- */
 .nav {
@@ -137,7 +134,7 @@ strong { color: var(--ink); font-weight: 700; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
 .btn-ghost:hover { border-color: var(--ink); }
 .btn-sm { padding: 7px 14px; font-size: 13px; border-radius: 6px; }
-.btn:focus-visible, .nav-link:focus-visible, .footer-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn:focus-visible, .nav-link:focus-visible, .footer-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 /* ---------- 首屏：左文字 / 右黑面板 ---------- */
 .hero {
@@ -162,9 +159,9 @@ strong { color: var(--ink); font-weight: 700; }
 .hero-name {
   font-family: var(--font-serif);
   font-size: clamp(52px, 6.2vw, 76px);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: normal;
   margin-bottom: 26px;
 }
 
@@ -182,7 +179,7 @@ strong { color: var(--ink); font-weight: 700; }
 .caret { font-weight: 700; color: var(--ink); animation: caret-blink 1s step-end infinite; }
 @keyframes caret-blink { 50% { opacity: 0; } }
 
-.hero-lede { color: var(--ink-2); font-size: clamp(15.5px, 1.3vw, 17px); line-height: 1.75; max-width: 48ch; margin-bottom: 16px; }
+.hero-lede { color: var(--ink-2); font-size: clamp(16px, 1.35vw, 18px); line-height: 1.6; max-width: 48ch; margin-bottom: 16px; }
 .hero-lede strong { font-weight: 700; }
 
 .hero-note { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 50ch; margin-bottom: 30px; }
@@ -264,8 +261,8 @@ strong { color: var(--ink); font-weight: 700; }
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 3px;
-  color: #ff6b6e;
-  border: 1.5px solid #ff6b6e;
+  color: var(--panel-muted);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   padding: 4px 12px;
   transform: rotate(-4deg);
   opacity: 0.9;
@@ -288,7 +285,7 @@ strong { color: var(--ink); font-weight: 700; }
   font-family: var(--font-serif);
   font-size: clamp(34px, 4vw, 46px);
   font-weight: 700;
-  color: var(--accent);
+  color: var(--ink);
   line-height: 1.1;
 }
 .stat-label {
@@ -308,8 +305,8 @@ strong { color: var(--ink); font-weight: 700; }
 .section-title {
   font-family: var(--font-serif);
   font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 600;
+  letter-spacing: normal;
 }
 
 /* ---------- 关于（4 项优势） ---------- */
@@ -321,7 +318,6 @@ strong { color: var(--ink); font-weight: 700; }
 .about-item .item-no { font-size: 12.5px; color: var(--muted-2); margin-bottom: 10px; }
 .about-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .about-item p { font-size: 14px; color: var(--muted); line-height: 1.75; }
-.about-item p .hl { color: var(--accent); }
 
 /* ---------- 经历 / 教育行 ---------- */
 .role {
@@ -356,7 +352,7 @@ strong { color: var(--ink); font-weight: 700; }
 .bullets { display: flex; flex-direction: column; gap: 10px; }
 .bullets li { font-size: 14.5px; color: var(--ink-2); line-height: 1.8; }
 .bullets strong { font-weight: 700; }
-.bullets .hl { color: var(--accent); font-weight: 700; }
+.bullets .hl { color: var(--ink); font-weight: 700; }
 .edu-extras { margin-top: 14px; }
 .edu-extras li { color: var(--muted); font-size: 14px; }
 
@@ -412,7 +408,7 @@ strong { color: var(--ink); font-weight: 700; }
   padding: 2px 8px;
 }
 .level-mid { color: var(--muted); }
-.level-special { color: var(--red); border-color: rgba(229, 72, 77, 0.45); }
+.level-special { color: var(--ink); border-color: var(--ink); }
 
 .skill-chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-chips span {
