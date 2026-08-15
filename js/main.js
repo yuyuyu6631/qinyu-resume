@@ -1,6 +1,6 @@
 /* ============================================================
    秦宇 · 测试工程师 — 简历网站交互脚本
-   零依赖: 打字机 / 滚动显现 /     零依赖: 打字机 / 滚动显现 / 数字动画 / 时间线
+   零依赖: 粒子背景 / 打字机 / 滚动显现 / 数字动画
    动效原则: 克制、仅服务于信息呈现
    ============================================================ */
 (function () {
@@ -123,7 +123,19 @@
     typedEl.textContent = roles[0];
   }
 
-  /* ---------- 滚动显现 + 数字动画 + 技能条 ---------- */
+  /* ---------- 滚动显现 ---------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  /* ---------- 关键成果数字动画 ---------- */
+  var countersDone = false;
   function animateCounter(el) {
     var target = parseInt(el.getAttribute("data-count"), 10) || 0;
     var suffix = el.getAttribute("data-suffix") || "";
@@ -139,36 +151,18 @@
     requestAnimationFrame(tick);
   }
 
-  var countersDone = false;
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      el.classList.add("visible");
-      io.unobserve(el);
-
-      if (!countersDone) {
-        var nums = el.querySelectorAll(".stat-num[data-count]");
-        if (nums.length) { nums.forEach(animateCounter); countersDone = true; }
-      }
-    });
-  }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
-
-  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-
-  /* ---------- 时间线进度 ---------- */
-  var timeline = document.getElementById("timeline");
-  if (timeline) {
-    var tio = new IntersectionObserver(function (entries) {
+  /* stats 区独立观察，滚入视口即启动数字递增 */
+  var statsSec = document.getElementById("stats");
+  if (statsSec) {
+    var sio = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          timeline.classList.add("done");
-          tio.disconnect();
-        }
+        if (!entry.isIntersecting || countersDone) return;
+        countersDone = true;
+        sio.disconnect();
+        statsSec.querySelectorAll(".stat-num[data-count]").forEach(animateCounter);
       });
-    }, { threshold: 0.1 });
-    tio.observe(timeline);
+    }, { threshold: 0.3 });
+    sio.observe(statsSec);
   }
 
   /* ---------- 导航激活状态 ---------- */
