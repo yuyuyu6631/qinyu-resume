@@ -49,11 +49,12 @@ python -m http.server 8080
 # 访问 http://localhost:8080
 ```
 
-## 🌐 部署到 GitHub Pages
+## 🌐 线上地址与同步发布
 
-1. 在 GitHub 新建仓库（如 `qinyu-resume`），把 `resume-site/` 下所有文件推送到仓库。
-2. 仓库 `Settings → Pages → Build and deployment → Source` 选择 **Deploy from a branch**，分支选 `main`，目录选 `/ (root)`。
-3. 保存后等待 1-2 分钟，访问 `https://<你的用户名>.github.io/<仓库名>/` 即可。
+- **线上地址**：<https://yuyuyu6631.github.io/qinyu-resume/>
+- 源码仓库：<https://github.com/yuyuyu6631/qinyu-resume>（`main` 分支 = 网站源码；`legacy-vite` 分支 = 旧版 React 项目备份）
+
+**本地更新后同步上线**：双击 `deploy.bat`（或在目录内执行 `.\deploy.ps1 "提交说明"`），脚本会自动提交并推送到 GitHub，Pages 在 1-2 分钟内自动更新，无需手动操作网页。
 
 ## 🎨 参考项目（GitHub stars 均 ≥ 1000，经 GitHub API 验证）
 
