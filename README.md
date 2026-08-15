@@ -25,9 +25,14 @@
 - 响应式布局 + 移动端汉堡菜单 + 打印友好样式（`@media print` 可直接导出 PDF）
 - 尊重 `prefers-reduced-motion`：动画全部降级为静态呈现
 
-## 🧠 文案协作方式
+## 🧠 文案协作方式（Skill 驱动）
 
-正文文案（网站 + PDF 简历）由 [shuorenhua「说人话」Skill](https://github.com/MrGeDiao/shuorenhua) 的流程改写：判场景 → 保护事实与术语（数字、公司、工具名、日期一个不改）→ 删空话收尾与名词化 → 把动作还原成「谁做了什么、怎么做的、结果是什么」。
+简历内容由两套 Skill 协作生成，技能包已安装在本仓库 `.skills/`：
+
+1. **[高密度证据链简历法](https://github.com/zhanfoguang/high-density-resume)**（`.skills/high-density-resume/`）：五步法（挖料 → 搭骨架 → 写血肉 → 排兵布阵 → 修门面），把经历改写成 `动作 + 工具/方法 + 结果` 证据单元，删除"锻炼了 / 负责 / 熟悉"类套话，每条内容做面试压力测试（3 秒内能否讲清背景、方法、难点与结果）。
+2. **[shuorenhua「说人话」](https://github.com/MrGeDiao/shuorenhua)**：判场景 → 保护事实与术语（数字、公司、工具名、日期一个不改）→ 删空话收尾与名词化 → 把动作还原成「谁做了什么、怎么做的、结果是什么」。
+
+配套参考：`.skills/docs/rubric.md`（简历评分表）、`.skills/templates/review-checklist.md`（审查清单）、`.skills/resume-evidence-matcher/`（投递具体岗位前的 JD 证据覆盖分析）。
 
 ## 📁 目录结构
 
@@ -35,10 +40,11 @@
 resume-site/
 ├── index.html          # 页面结构（含全部简历内容）
 ├── resume.html         # A4 打印版简历（生成 PDF 的源文件）
-├── css/style.css       # 中式编辑排版样式与设计变量
+├── css/style.css       # 黑白单色极简样式与设计变量（风格提取自 enderromantice.com）
 ├── js/main.js          # 交互脚本（粒子背景 / 打字机 / 滚动动画等）
 ├── assets/
 │   └── 秦宇-测试工程师.pdf  # 简历 PDF（供下载，由 resume.html 打印生成）
+├── .skills/            # 简历写作技能包（高密度证据链简历法 + JD 匹配 + 模板/评分表）
 ├── deploy.bat          # 一键发布入口（Windows 双击）
 ├── deploy.ps1          # 一键发布脚本（提交并推送 main）
 ├── .gitignore
