@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+    --ink: 0 0% 5%;
+    --ink-soft: 0 0% 18%;
+    --ink-faint: 0 0% 42%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 42%;
+    --border: 0 0% 90%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+    --accent: 0 0% 5%;
+    --accent-foreground: 0 0% 100%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    text-wrap: pretty;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-ink text-background;
+  }
+
+  /* 专注可见焦点 */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ink));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+  .glow-dot {
+    background: radial-gradient(circle at center, hsl(var(--ink) / 0.14), transparent 70%);
+  }
+  .card-hover {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card-hover:hover {
+    border-color: hsl(var(--ink) / 0.28);
+    box-shadow: 0 12px 32px -12px hsl(var(--ink) / 0.12);
+    transform: translateY(-2px);
+  }
+  .hairline {
+    box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.06);
+  }
+}
+
+/* 打印页（/print）：A4 专用 */
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm 13mm;
+  }
+  body {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+  .no-print {
+    display: none !important;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+}
+
+/* 减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

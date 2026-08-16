@@ -1,0 +1,273 @@
+{
+  "$schema": "./resume.schema.json",
+  "basics": {
+    "name": "秦宇",
+    "nameEn": "QIN YU",
+    "title": "测试开发工程师",
+    "brand": {
+      "primary": "Test Development Engineer",
+      "subs": ["AI Testing", "Automation", "ATE / Semiconductor", "Windows Desktop Testing"]
+    },
+    "positioning": "专注软件测试开发、AI 应用测试与半导体 ATE 上位机测试。",
+    "contact": {
+      "phone": "18662732817",
+      "email": "1642732247@qq.com",
+      "location": "深圳",
+      "salary": "15-20K",
+      "availability": "可随时到岗",
+      "github": "https://github.com/yuyuyu6631/qinyu-resume"
+    },
+    "summary": "软件工程本科，1 年测试开发经验。现于半导体芯片测试机上市公司负责 ATE 上位机软件测试（黑盒 + UI 自动化）；此前在 AI 智能体与低代码平台独立完成 1000+ 用例与 50+ 核心 API 自动巡检。接口、自动化与 AI 应用测试均可独立负责，擅长结合接口返回、SQL 与日志定位问题，熟悉从需求评审到版本上线的完整测试流程。"
+  },
+  "highlights": [
+    { "value": "1000+", "label": "独立设计与执行的功能 / 接口 / 回归用例", "sub": "覆盖 4 条产品线，回归基线持续维护" },
+    { "value": "50+", "label": "核心 API 自动巡检", "sub": "MeterSphere 定时执行、断言、异常钉钉告警" },
+    { "value": "10+", "label": "企业站点测试环境搭建", "sub": "摄像头 / 分机 / AI 盒子现场联调" },
+    { "value": "1 年", "label": "测试开发经验", "sub": "半导体 ATE 上位机 · AI 智能体平台" }
+  ],
+  "about": [
+    {
+      "no": "01",
+      "title": "风险驱动的测试设计",
+      "body": "以风险拆解驱动用例设计：综合运用等价类、边界值、场景法、状态迁移等方法，覆盖权限、异常、兼容性与回归场景。独立完成用例设计与执行，跟进缺陷直至修复验证通过，输出完整测试报告。"
+    },
+    {
+      "no": "02",
+      "title": "AI 应用测试",
+      "body": "在 LLM-to-SQL、Agent Workflow、Skill / Tool Calling 三个方向开展专项测试：验证意图识别、工具选择、参数提取、SQL 结果与业务口径一致性，输出 Badcase 记录与 Prompt 偏差分析。"
+    },
+    {
+      "no": "03",
+      "title": "自动化与巡检",
+      "body": "使用 Python + Pytest 编写接口、页面流程与数据校验脚本，基于 Playwright 实现 UI 自动化；50+ 核心 API 接入 MeterSphere 定时巡检，异常自动触发钉钉告警，持续维护回归基线。"
+    },
+    {
+      "no": "04",
+      "title": "交叉验证与问题定位",
+      "body": "通过接口返回、SQL 结果、页面展示与业务规则交叉验证定位问题；结合 Linux 日志、服务状态与接口响应排查环境异常，能够区分产品缺陷、数据异常与环境阻塞，先分类再定位。"
+    }
+  ],
+  "experience": [
+    {
+      "company": "长川科技股份有限公司",
+      "role": "软件测试",
+      "type": "在职",
+      "period": "2026.07 — 至今",
+      "industry": "半导体芯片测试机（ATE）上位机软件 · 车规级功放芯片 / 功耗芯片测试 · 上市公司",
+      "growth": "Windows Desktop / ATE",
+      "summary": "负责 ATE 上位机软件的黑盒测试与 UI 自动化，测试流程遵循公司标准研发规范，测试左移至需求评审。",
+      "bullets": [
+        { "lead": "需求评估与计划", "text": "按功能、性能、接口、兼容性四类风险拆测试范围，输出执行计划与发布前验证清单，测试左移至需求评审阶段。" },
+        { "lead": "黑盒用例与 UI 自动化", "text": "上位机软件按黑盒方法设计用例，功能路径、权限、异常输入、边界数据逐条覆盖；搭建界面 UI 自动化，实现主流程与核心操作路径自动回归。" },
+        { "lead": "设备通信接口", "text": "上位机与测控单元的指令下发、参数配置、数据采集、状态回传逐项验证，异常响应和链路状态变化单列场景。" },
+        { "lead": "稳定性与性能", "text": "组织长时间连续运行压力测试，监测资源占用、响应延迟与运行状态，记录异常现象并分析稳定性风险。" },
+        { "lead": "流程与交付", "text": "需求评审、用例评审、缺陷跟踪、发布前验证各环节按规范流程执行并留痕；兼容矩阵、版本回归与测试报告归档。" }
+      ],
+      "tags": ["Windows 桌面测试", "ATE / 半导体", "黑盒测试", "UI 自动化", "压力测试"]
+    },
+    {
+      "company": "北京零壹视界科技有限公司",
+      "role": "测试开发（实习）",
+      "type": "实习",
+      "period": "2025.09 — 2026.06",
+      "industry": "AI 智能体与低代码平台 · 数据智能体 / 企业写作智能体 / 低代码平台 / 智能体开发平台",
+      "growth": "AI Testing",
+      "summary": "独立负责四条产品线的测试设计与自动化，建立 1000+ 用例回归基线与 50+ 核心 API 自动巡检体系，深入 AI 链路问题定位。",
+      "bullets": [
+        { "lead": "用例体系", "text": "独立设计并执行 1000+ 条功能、接口和回归用例，覆盖四条产品线，回归基线持续维护。" },
+        { "lead": "权限与异常分支", "text": "多租户、多角色权限模块的授权边界、数据隔离、模块联动、异常分支逐条设计场景。" },
+        { "lead": "API 巡检", "text": "基于 MeterSphere 搭建 50+ 核心 API 自动巡检，动态参数、断言、定时任务、钉钉告警配齐，接口回归无需人工值守。" },
+        { "lead": "AI 链路定位", "text": "验证意图识别、工具选择、参数提取、调用链路和异常重试；接口 + SQL + 业务规则 + 人工复核四路对照，定位模型输出偏差、工具调用失败和数据口径不一致。" }
+      ],
+      "tags": ["AI 智能体", "LLM 应用测试", "API 自动化", "MeterSphere 巡检", "权限测试"]
+    },
+    {
+      "company": "湖南展通佳创能源有限公司",
+      "role": "软件测试（实习）",
+      "type": "实习",
+      "period": "2025.07 — 2025.09",
+      "industry": "燃气企业数字化系统 · 管理端 / 配送端 / 用户端",
+      "growth": "Software Testing",
+      "summary": "从需求到交付完整参与企业数字化系统测试，独立完成 10+ 企业站点测试环境搭建与现场联调。",
+      "bullets": [
+        { "lead": "业务梳理", "text": "逐项梳理订单处理、配送调度、客户资料、安检巡检、设备联动、数据统计等业务问题，转化为可验证的需求与测试范围。" },
+        { "lead": "方案与用例", "text": "参与订单流转、客户管理、派单调度、权限管理、状态更新、多端协同的方案设计与测试，管理端、配送端、用户端关键链路全覆盖。" },
+        { "lead": "现场交付", "text": "完成 10+ 企业站点测试环境搭建，摄像头、分机、AI 盒子现场联调；独立整理验收材料、问题清单、功能说明与交付记录，跟进问题直至闭环。" }
+      ],
+      "tags": ["业务测试", "现场联调", "多端协同", "验收交付"]
+    }
+  ],
+  "projects": [
+    {
+      "no": "01",
+      "title": "车规级芯片测试机（ATE）上位机软件",
+      "badge": "软件测试",
+      "period": "2026.07 — 至今",
+      "category": "Windows Desktop / ATE",
+      "problem": "半导体 ATE 上位机软件面向车规级功放芯片、功耗芯片的自动化测试，功能路径深、设备通信链路长、稳定性要求高。",
+      "approach": "按黑盒方法设计用例，核心路径（指令下发、参数配置、数据采集、状态回传）优先覆盖；搭建界面 UI 自动化支撑版本迭代回归；组织长时间连续运行压测监测资源占用与响应延迟。",
+      "technology": ["黑盒测试", "UI 自动化", "压力测试", "兼容矩阵"],
+      "strategy": [
+        "功能路径、权限、异常输入、边界数据逐条设计用例",
+        "主流程与核心操作路径自动回归",
+        "OS × 硬件配置兼容矩阵 + 发布前检查"
+      ],
+      "result": "版本回归与发布前验证有据可查，稳定性风险通过长时压测提前暴露并闭环。"
+    },
+    {
+      "no": "02",
+      "title": "星点评 AI 工具平台",
+      "badge": "测试开发",
+      "period": "2026.03 — 2026.06",
+      "category": "AI Platform",
+      "problem": "AI 工具导航与推荐平台：检索、分类筛选、详情展示、榜单推荐、登录注册、数据导入，涉及登录态与数据一致性风险。",
+      "approach": "按模块拆解业务风险，边界、空数据、异常输入、权限状态单列场景；Playwright 执行主流程自动化，Pytest 校验接口；用 LLM 生成用例初稿与异常数据，结合业务规则人工复核。",
+      "technology": ["Playwright", "Pytest", "MySQL", "Cookie / Session", "LLM 辅助用例生成"],
+      "strategy": [
+        "登录、未登录、过期三种登录态下的访问控制验证",
+        "MySQL 核对导入数据、工具信息、标签和推荐结果",
+        "LLM 生成内容做可执行性、覆盖缺口与结果偏差复核"
+      ],
+      "result": "核心路径全覆盖，页面行为与接口返回逐项比对，登录态与数据口径问题在提测前拦截。"
+    },
+    {
+      "no": "03",
+      "title": "数字分身小程序自动化",
+      "badge": "测试开发",
+      "period": "2026.05 — 2026.06",
+      "category": "Automation Framework",
+      "problem": "数字分身小程序缺少真实 UI 自动化，微信开发者工具自动化端口不稳定，元素定位易变。",
+      "approach": "接入微信开发者工具自动化端口；Python 解析 dist/app.json 以 auto 模式执行 Pytest，覆盖注册激活、Tab 导航、旅行入口、供需档案、数字档案、账号设置全流程；重试机制应对端口不稳定，参数管理与执行逻辑分离。",
+      "technology": ["微信小程序", "UI 自动化", "Python", "Pytest"],
+      "strategy": [
+        "自动化端口不稳定 → 重试机制 + 定位策略优化",
+        "多环境配置冲突 → 参数管理与执行逻辑分离",
+        "缺陷报告自动生成：截图 / JUnit / HTML / Markdown"
+      ],
+      "result": "冒烟、核心流程与协议文案回归自动化，缺陷报告含严重级别、复现步骤与修复建议。"
+    },
+    {
+      "no": "04",
+      "title": "CICC 中金点睛（Text-to-SQL）",
+      "badge": "测试开发工程师",
+      "period": "2025.10 — 2026.01",
+      "category": "AI Testing / LLM-to-SQL",
+      "problem": "企业数据分析平台以自然语言提问生成数据查询，模型输出偏差、工具调用失败与数据口径不一致是高发风险。",
+      "approach": "正常、异常、边界、无权限、空结果、口径不一致六类场景全覆盖；Text-to-SQL 五维验证（用户问题、SQL 生成、查询结果、页面展示、业务口径）；Postman、MeterSphere 验证接口，SQL 核对 AI 返回与真实业务数据一致性。",
+      "technology": ["Text-to-SQL", "Postman", "MeterSphere", "SQL 核对"],
+      "strategy": [
+        "五维验证：问题 → SQL → 结果 → 展示 → 口径逐项核对",
+        "接口参数、返回结构、状态码、异常提示、权限控制验证",
+        "缺陷从复现、提交到回归全程跟进"
+      ],
+      "result": "建立 LLM-to-SQL 专项测试方法，模型输出偏差可定位、可复现、可回归。"
+    }
+  ],
+  "aiLab": {
+    "headline": "AI 应用测试方法论",
+    "disclaimer": "以下为本人在 LLM-to-SQL / Agent Workflow / Skill·Tool Calling 方向沉淀的测试方法论，含真实项目的 Badcase 与回归实践。",
+    "pipeline": [
+      { "stage": "Input", "detail": "意图识别 / 参数提取" },
+      { "stage": "LLM / Agent", "detail": "推理链路 / Workflow" },
+      { "stage": "Tool Calling", "detail": "工具选择 / 参数校验" },
+      { "stage": "Output", "detail": "SQL / 文本 / 结构化输出" },
+      { "stage": "Evaluation", "detail": "评测指标 / 业务口径核对" },
+      { "stage": "Badcase", "detail": "偏差归因 / Prompt 分析" },
+      { "stage": "Regression", "detail": "评估集回归 / 基线维护" }
+    ],
+    "directions": [
+      {
+        "name": "LLM-to-SQL",
+        "points": ["五维验证：问题 / SQL / 结果 / 展示 / 口径", "SQL 核对真实业务数据一致性", "准确率 / 召回评测"],
+        "evidence": "CICC 中金点睛项目（真实）"
+      },
+      {
+        "name": "Agent Workflow",
+        "points": ["意图识别与参数提取校验", "调用链路与异常重试验证", "多轮对话上下文一致性"],
+        "evidence": "零壹视界 AI 智能体平台（真实）"
+      },
+      {
+        "name": "Skill / Tool Calling",
+        "points": ["工具选择正确性", "结构化输出校验（参数格式 / 类型）", "Badcase 归因：模型 / 工具 / 数据"],
+        "evidence": "AI 链路四路对照定位（真实）"
+      }
+    ],
+    "methods": ["评估集构建", "评测指标（准确率 / 召回）", "Prompt 偏差分析", "Badcase 沉淀", "回归评测基线", "多轮对话测试"]
+  },
+  "capabilities": [
+    {
+      "name": "Test Development",
+      "level": "熟练",
+      "techs": ["Pytest", "数据驱动", "用例设计（等价类 / 边界值 / 场景法 / 状态迁移）", "XMind", "Jira / 禅道"],
+      "note": "独立搭建接口与页面自动化体系，从用例设计到缺陷闭环全流程负责。"
+    },
+    {
+      "name": "Automation",
+      "level": "熟练",
+      "techs": ["Python", "Playwright", "Selenium", "Appium（了解）", "Jenkins", "CI/CD 流水线"],
+      "note": "接口、页面流程与数据校验脚本均可独立编写，接入定时 / 触发执行与告警。"
+    },
+    {
+      "name": "API Testing",
+      "level": "熟练",
+      "techs": ["Postman", "Apipost", "MeterSphere", "requests", "Charles / Fiddler", "HTTP / HTTPS", "WebSocket"],
+      "note": "50+ 核心 API 自动巡检，动态参数、断言、定时任务、钉钉告警配齐。"
+    },
+    {
+      "name": "AI Testing",
+      "level": "专项",
+      "techs": ["LLM-to-SQL", "Agent Workflow", "Tool Calling", "评估集构建", "评测指标", "Prompt 偏差分析", "Badcase 沉淀"],
+      "note": "三个 AI 方向均有真实项目实践与可复现的定位方法。"
+    },
+    {
+      "name": "Desktop Testing",
+      "level": "熟练",
+      "techs": ["Windows 上位机", "ATE 设备通信链路", "UI 自动化", "稳定性 / 压力测试"],
+      "note": "上位机与测控单元指令链路逐项验证，长时压测监测资源与延迟。"
+    },
+    {
+      "name": "Performance",
+      "level": "掌握",
+      "techs": ["JMeter", "长时间压测", "资源占用监控", "响应延迟分析"],
+      "note": "组织连续运行压力测试并输出稳定性风险评估。"
+    },
+    {
+      "name": "CI / CD",
+      "level": "掌握",
+      "techs": ["Jenkins", "MeterSphere 定时巡检", "钉钉告警", "Git"],
+      "note": "巡检与回归无需人工值守，异常自动告警。"
+    },
+    {
+      "name": "Linux & Shell",
+      "level": "掌握",
+      "techs": ["Linux", "Shell", "日志分析", "Docker", "服务状态排查"],
+      "note": "结合日志与服务状态区分环境问题与产品缺陷。"
+    },
+    {
+      "name": "SQL & Data",
+      "level": "掌握",
+      "techs": ["MySQL", "SQL 数据校验", "Redis", "测试数据构造"],
+      "note": "测试数据构造、SQL 核对、AI 返回与真实业务数据一致性验证。"
+    }
+  ],
+  "education": {
+    "school": "湖南涉外经济学院",
+    "major": "软件工程 · 本科",
+    "period": "2022 — 2026",
+    "desc": "系统学习操作系统、数据库、软件测试及 Python 编程等核心课程，掌握面向对象开发思想与常用开发工具，具备独立完成功能模块开发的能力。",
+    "extras": "荣誉与证书：校级「优秀共青团员」· 优秀学生干部 · 大学英语四级（CET-4）· 普通话二级乙等 · C1 驾照"
+  },
+  "proof": {
+    "headline": "可证明性",
+    "github": {
+      "name": "qinyu-resume",
+      "url": "https://github.com/yuyuyu6631/qinyu-resume",
+      "desc": "本简历网站源码：Next.js + TypeScript + Tailwind + shadcn/ui，resume.json 单一数据源驱动网站 / PDF / DOCX / ATS 多端输出，GitHub Actions 自动构建部署。"
+    },
+    "placeholders": [
+      { "name": "自动化测试框架", "desc": "接口 / UI 自动化框架源码与使用说明（构建中）" },
+      { "name": "测试报告样例", "desc": "真实项目的测试报告与巡检告警样例（脱敏后公开）" },
+      { "name": "技术文章", "desc": "AI 应用测试方法与 Badcase 分析沉淀（构建中）" }
+    ]
+  }
+}

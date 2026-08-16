@@ -1,0 +1,36 @@
+{
+  "name": "qinyu-resume",
+  "version": "2.0.0",
+  "private": true,
+  "description": "秦宇 · 测试开发工程师 / AI 应用测试 — 个人品牌简历网站（Next.js + TypeScript + Tailwind + shadcn/ui + Motion）",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "gen:ats": "py scripts/gen_ats.py",
+    "gen:docx": "py scripts/gen_docx.py",
+    "gen:pdf": "powershell -ExecutionPolicy Bypass -File scripts/gen_pdf.ps1",
+    "gen:all": "npm run gen:ats && npm run gen:docx"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.469.0",
+    "motion": "^12.0.6",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.7.3"
+  }
+}

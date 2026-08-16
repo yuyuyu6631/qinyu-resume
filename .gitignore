@@ -1,5 +1,12 @@
-﻿Thumbs.db
+# dependencies
+node_modules/
+.next/
+out/
+
+# OS
+Thumbs.db
 Desktop.ini
 .DS_Store
-node_modules/
 
+# 临时文件
+*.tmp

@@ -1,109 +1,82 @@
-# 秦宇 · 测试工程师 — 个人简历网站
+# 秦宇 · Test Development Engineer — 个人品牌简历网站
 
-基于 PDF 简历《秦宇-测试工程师.pdf》构建的个人简历单页网站。**纯 HTML / CSS / JavaScript 实现，零运行时依赖**，可直接双击打开，也可一键部署到 GitHub Pages。
+> AI 应用测试 · 自动化 · 半导体 ATE 上位机测试 · Windows 桌面测试
 
-## ✨ 设计风格：黑白单色极简（风格提取自 [enderromantice.com](https://enderromantice.com)）
+个人品牌简历网站 v2：以**测试开发工程师 + AI 应用测试**为核心定位，采用现代工程师作品集的设计语言（Apple / Vercel / Linear 风格），并实现 **单一数据源驱动多端输出**——一份 `resume.json` 同时生成网站、ATS 可解析 PDF、正式 DOCX、纯文本 ATS 版与 Markdown 数据源。
 
-布局骨架、间距、字号、导航与档案卡结构均从参考站提取（`--max 1120px`、Hero `0.92fr/1.08fr`、大标题 `clamp(52px,6.2vw,76px)` 等），并将彩色强调全部中和为单色：
+## 技术栈
 
-- **纯黑白灰**：白底（`#ffffff`）+ 墨黑正文（`#0a0a0a`）+ 1px 浅灰细线（`#e7e7e7`）分区，**无任何彩色强调**；关键数字用加粗代替标色（中文阅读习惯：加粗即强调）
-- **字体与参考站一致**：正文 Geist（中文回退 PingFang / 微软雅黑）、大标题 Cormorant Garamond（中文回退 Noto Serif SC 宋体）、等宽 Geist Mono 用于日期/编号/坐标
-- **信息前置**：首屏 = 求职定位 + 打字机角色标题 + 一句人话介绍 + 黑底反色档案卡（求职意向 / 经验 / 薪资 / 联系方式 / 坐标牌 + 旋转印章）
-- **关键成果数字条**：1000+ 用例 / 50+ API 巡检 / 10+ 站点 / 4 条产品线，滚入视口时数字递增
-- **标签化技能**：技能区用「分组 + 标签 + 熟练度徽章」呈现，HR 3 秒扫完关键词（不用自评百分比条）
-- 编号章节（01/02/03…）、直角分区 + 细分割线，无渐变、无霓虹、无玻璃拟态
-- 深色页脚（黑底反色）收尾，联系方式与简历下载集中呈现
+- **Next.js 15（App Router，静态导出 `output: export`）+ TypeScript**
+- **Tailwind CSS**（设计令牌化，shadcn/ui 风格组件：button / badge / card / separator）
+- **Motion**（framer-motion 继任者）：页面进入、滚动显现、数字递增，全部克制且尊重 `prefers-reduced-motion`
+- 无 UI 框架之外的运行时依赖；无字体下载依赖（Geist 经 next/font 优化，中文走系统字体栈）
+- **GitHub Actions** 自动构建并部署 GitHub Pages
 
-## ✨ 动态效果（克制、自研、零依赖）
+## 单一数据源架构
 
-- **浅色粒子背景**：低对比度连线粒子 + 鼠标交互连线（自研 Canvas 实现，配色适配白底纸感风格）
-- **打字机循环角色标题**：软件测试工程师 / 测试开发工程师 / AI 应用测试 / 接口自动化，四角色循环输入删除（自研，无依赖）
-- IntersectionObserver 滚动显现（`.reveal` 元素进入视口淡入上浮）
-- 数字递增动画（1000+ 用例 / 50+ API 巡检 / 10+ 站点 / 4 条产品线）
-- 技能标签 hover 边框加深、按钮 / 链接 hover 反馈、回到顶部按钮滚动显现
-- 导航滚动跟随高亮当前章节（scrollspy）
-- 响应式布局 + 移动端汉堡菜单 + 打印友好样式（`@media print` 可直接导出 PDF）
-- 尊重 `prefers-reduced-motion`：动画全部降级为静态呈现
+```
+data/resume.json ──┬──> 网站（components/* 直接消费）
+                   ├──> A4 PDF（app/print/ 打印页 → scripts/gen_pdf.ps1 → Chrome 无头）
+                   ├──> DOCX（scripts/gen_docx.py → python-docx）
+                   ├──> ATS 纯文本（scripts/gen_ats.py → docs/ats/resume.txt）
+                   └──> Markdown 数据源（scripts/gen_ats.py → docs/resume.md）
+```
 
-## 🧠 文案协作方式（Skill 驱动）
+改内容只改 `data/resume.json` 一处，其余全部产物重新生成。**所有内容以真实经历为准，禁止虚构。**
 
-简历内容由两套 Skill 协作生成，技能包已安装在本仓库 `.skills/`：
-
-1. **[高密度证据链简历法](https://github.com/zhanfoguang/high-density-resume)**（`.skills/high-density-resume/`）：五步法（挖料 → 搭骨架 → 写血肉 → 排兵布阵 → 修门面），把经历改写成 `动作 + 工具/方法 + 结果` 证据单元，删除"锻炼了 / 负责 / 熟悉"类套话，每条内容做面试压力测试（3 秒内能否讲清背景、方法、难点与结果）。
-2. **[shuorenhua「说人话」](https://github.com/MrGeDiao/shuorenhua)**：判场景 → 保护事实与术语（数字、公司、工具名、日期一个不改）→ 删空话收尾与名词化 → 把动作还原成「谁做了什么、怎么做的、结果是什么」。
-
-配套参考：`.skills/docs/rubric.md`（简历评分表）、`.skills/templates/review-checklist.md`（审查清单）、`.skills/resume-evidence-matcher/`（投递具体岗位前的 JD 证据覆盖分析）。
-
-## 📁 目录结构
+## 目录结构
 
 ```
 resume-site/
-├── index.html          # 页面结构（含全部简历内容）
-├── resume.html         # A4 打印版简历（生成 PDF 的源文件）
-├── css/style.css       # 黑白单色极简样式与设计变量（风格提取自 enderromantice.com）
-├── js/main.js          # 交互脚本（粒子背景 / 打字机 / 滚动动画等）
-├── assets/
-│   └── 秦宇-测试工程师.pdf  # 简历 PDF（供下载，由 resume.html 打印生成）
-├── .skills/            # 简历写作技能包（高密度证据链简历法 + JD 匹配 + 模板/评分表）
-├── deploy.bat          # 一键发布入口（Windows 双击）
-├── deploy.ps1          # 一键发布脚本（提交并推送 main）
-├── .gitignore
+├── app/
+│   ├── layout.tsx        # 根布局：字体、SEO metadata、JSON-LD 结构化数据
+│   ├── page.tsx          # 首页（Hero / 经历 / 项目 / AI Lab / 能力 / 证明 / 教育 / 联系）
+│   ├── print/page.tsx    # A4 打印版（PDF 生成源，ATS 可解析）
+│   └── globals.css       # 设计令牌与打印样式
+├── components/
+│   ├── ui/               # shadcn/ui 风格基础组件
+│   └── sections/         # Nav / Hero / Experience / Projects / AiLab / Capabilities / Proof / Education / Contact
+├── data/resume.json      # 单一事实源
+├── lib/                  # 数据加载、工具函数、资源路径
+├── public/               # 简历 PDF / DOCX / favicon / og 图
+├── docs/                 # ATS 版、Markdown 数据源
+├── scripts/              # PDF / DOCX / ATS 生成脚本
+├── .skills/              # 简历写作技能包（高密度证据链简历法）
+├── .github/workflows/    # Pages 部署
 └── README.md
 ```
 
-## 🚀 本地预览
-
-直接双击 `index.html` 即可打开（Google Fonts 离线时自动降级系统字体），或使用本地服务：
+## 本地开发
 
 ```bash
-cd resume-site
-python -m http.server 8080
-# 访问 http://localhost:8080
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-## 🌐 线上地址与同步发布
+## 构建与文档生成
 
-- **线上地址**：<https://yuyuyu6631.github.io/qinyu-resume/>
-- 源码仓库：<https://github.com/yuyuyu6631/qinyu-resume>（`main` 分支 = 网站源码；`legacy-vite` 分支 = 旧版 React 项目备份）
+```bash
+npm run build      # 静态导出到 out/
+npm run gen:all    # 生成 ATS 文本 + Markdown 数据源 + DOCX
+npm run gen:pdf    # 由 /print 打印页生成 ATS 可解析 PDF（需先 build）
+```
 
-**本地更新后同步上线**：双击 `deploy.bat`（或在目录内执行 `.\deploy.ps1 "提交说明"`），脚本会自动提交并推送到 GitHub，Pages 在 1-2 分钟内自动更新，无需手动操作网页。
+生成的 PDF / DOCX 位于 `public/`（网站下载用）与 `docs/`（存档）。
 
-## 🎨 参考项目
+## 部署
 
-**风格直接对标站点（布局骨架与视觉语言来源）：**
+推送 `main` 分支后 GitHub Actions 自动构建并部署到 GitHub Pages：
 
-| 项目 | 借鉴点 |
-|---|---|
-| [enderromantice.com](https://enderromantice.com) | 黑白单色极简、Hero 网格、导航、Cormorant Garamond 大标题、黑底档案面板与坐标牌 |
+- 线上地址：<https://yuyuyu6631.github.io/qinyu-resume/>
+- 源码仓库：<https://github.com/yuyuyu6631/qinyu-resume>（`main` = 本站；`legacy-vite` = 旧版 React 备份）
 
-**简历 / 作品集模板（信息架构与排版参考，GitHub stars 均 ≥ 1000）：**
+## 设计说明
 
-| 项目 | Stars | 借鉴点 |
-|---|---|---|
-| [amruthpillai/Reactive-Resume](https://github.com/amruthpillai/Reactive-Resume) | 40.3k | 简历信息组织方式、档案卡排版 |
-| [salomonelli/best-resume-ever](https://github.com/salomonelli/best-resume-ever) | 16.5k | 多主题简历的层级与分区 |
-| [bchiang7/v4](https://github.com/bchiang7/v4) | 8.3k | 极简编辑风排版、导航与信息密度 |
-| [saadpasta/developerFolio](https://github.com/saadpasta/developerFolio) | 6.6k | 技能区划分与项目展示结构 |
-| [RyanFitzgerald/devportfolio](https://github.com/RyanFitzgerald/devportfolio) | 5.0k | 极简现代单页布局 |
-| [rammcodes/Dopefolio](https://github.com/rammcodes/Dopefolio) | 3.7k | 项目卡片动效与 hover 交互 |
-| [StartBootstrap/startbootstrap-resume](https://github.com/StartBootstrap/startbootstrap-resume) | 2.2k | 简历侧栏信息卡布局 |
+- 视觉语言：白底墨黑、1px 细线、大留白、精确网格、微妙光效；无彩色噪声、无廉价粒子/3D
+- 排版：Geist（拉丁/数字，tabular-nums）+ 系统中文栈（PingFang / 微软雅黑）
+- 动画：Motion 驱动的进入与滚动显现、数字递增、AI Lab 流程链，全部服务于信息层级
+- 可访问性：focus-visible 焦点环、ARIA 标签、`prefers-reduced-motion` 降级、打印样式
 
-**动效库（仅作效果参考，本站为自研轻量实现）：**
+## 简历写作方法论
 
-| 项目 | Stars | 对应效果 |
-|---|---|---|
-| [michalsnik/aos](https://github.com/michalsnik/aos) | 28.1k | 滚动显现动画 |
-| [greensock/GSAP](https://github.com/greensock/GSAP) | 27.7k | 时间线动画思路 |
-| [jlmakes/scrollreveal](https://github.com/jlmakes/scrollreveal) | 22.5k | 滚动显现动画 |
-| [mattboldt/typed.js](https://github.com/mattboldt/typed.js) | 16.3k | 打字机效果 |
-| [darkroomengineering/lenis](https://github.com/darkroomengineering/lenis) | 15.4k | 平滑滚动（未启用，保持克制） |
-| [locomotivemtl/locomotive-scroll](https://github.com/locomotivemtl/locomotive-scroll) | 8.8k | 视口元素检测 |
-
-## ✍️ 定制指南
-
-- **改内容**：编辑 `index.html` 中对应 section 的文本即可；PDF 简历改 `resume.html`，再用 Edge 无头模式重新生成：
-  `msedge --headless=new --no-pdf-header-footer --print-to-pdf=assets/秦宇-测试工程师.pdf resume.html`
-- **改颜色**：修改 `css/style.css` 顶部 `:root` 中的设计变量（`--bg` 背景 / `--ink` 墨色 / `--muted` 次要文字 / `--line` 细线 / `--panel` 黑底面板）。
-- **改技能标签**：在 `index.html` 的 `.skill-chips` 里增删 `<span>` 项即可，熟练度改 `.level` 徽章（`level-mid` / `level-special` 变体）。
-- **改关键数字**：调整 `.stat-num` 的 `data-count` 属性（数字动画目标值）与 `data-suffix`（后缀）。
-- **改打字机文案**：编辑 `js/main.js` 中 `roles` 数组即可。
+内容生成遵循 `.skills/` 中的「高密度证据链简历法」：每条经历都是 `动作 + 工具/方法 + 结果` 证据单元，删除套话，面试压力测试通过才保留。
