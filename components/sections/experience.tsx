@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const stageLabel: Record<string, { label: string; className: string }> = {
-  "Software Testing": { label: "01 · 软件测试", className: "bg-muted text-ink-soft" },
-  "AI Testing": { label: "02 · 测试开发 / AI Testing", className: "bg-ink text-background" },
-  "Windows Desktop / ATE": { label: "03 · 测试开发 / Desktop · ATE", className: "bg-ink text-background" },
+  "Software Testing": { label: "01 · Software Testing", className: "bg-muted text-ink-soft" },
+  "AI Testing": { label: "02 · Test Development · AI Testing", className: "bg-ink text-background" },
+  "Windows Desktop / ATE": { label: "03 · Test Development · ATE / Desktop", className: "bg-ink text-background" },
 };
 
 export function Experience() {
@@ -23,13 +23,12 @@ export function Experience() {
         transition={{ duration: 0.6, ease }}
         className="mb-14"
       >
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Experience</p>
+        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Career Evolution</p>
         <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
           从软件测试到 AI Testing 与 ATE
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">
-          三段经历对应能力成长线：业务测试打底 → AI 智能体平台独立测试开发 → 半导体 ATE 上位机测试。
-          每一段都有独立负责的成果，可在面试中展开。
+          软件测试 → 测试开发 → AI 应用测试 → 半导体 ATE。
         </p>
       </motion.div>
 

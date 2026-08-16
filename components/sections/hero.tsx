@@ -1,44 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { resumeData } from "@/lib/resume";
 import { asset } from "@/lib/asset";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-function CountUp({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState("0");
-  const m = value.match(/^([\d.]+)(.*)$/);
-  const target = m ? parseFloat(m[1]) : 0;
-  const suffix = m ? m[2] : value;
-
-  useEffect(() => {
-    if (!inView) return;
-    const t0 = performance.now();
-    const dur = 1200;
-    let raf: number;
-    const tick = (t: number) => {
-      const p = Math.min((t - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const n = target * eased;
-      setDisplay(target % 1 === 0 ? String(Math.round(n)) : n.toFixed(1));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, target]);
-
-  return (
-    <span ref={ref} className="tabular">
-      {display}
-      {suffix}
-    </span>
-  );
-}
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -135,8 +101,8 @@ export function Hero() {
               <dt className="order-2 mt-1.5 block text-[13px] leading-snug text-ink-faint">
                 {h.label}
               </dt>
-              <dd className="order-1 block font-mono text-[clamp(1.9rem,4vw,2.6rem)] font-semibold tracking-tight text-ink">
-                <CountUp value={h.value} />
+              <dd className="order-1 block font-mono text-[clamp(1.9rem,4vw,2.6rem)] font-semibold tracking-tight text-ink tabular">
+                {h.value}
               </dd>
               <p className="mt-1.5 text-[11.5px] leading-snug text-ink-faint/80">{h.sub}</p>
             </div>

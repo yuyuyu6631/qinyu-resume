@@ -17,7 +17,7 @@ export default function PrintPage() {
         <h1 className="text-[30px] font-bold tracking-[0.2em]">{b.name}</h1>
         <p className="mt-1 text-[14px] font-semibold">{b.brand.primary} · AI Testing · Automation · ATE / Semiconductor</p>
         <p className="mt-1.5 text-[11.5px] text-neutral-600">
-          电话 {b.contact.phone} ｜ 邮箱 {b.contact.email} ｜ 男 · 22 岁 · 本科 · 1 年经验 ｜ 期望城市：{b.contact.location} ｜ 期望薪资：{b.contact.salary} ｜ {b.contact.availability}
+          电话 {b.contact.phone} ｜ 邮箱 {b.contact.email} ｜ 男 · 22 岁 · 本科 · 1 年+测试 / 测试开发经验 ｜ 期望城市：{b.contact.location} ｜ {b.contact.availability}
         </p>
         <p className="mt-1 text-[11.5px] text-neutral-600">GitHub: {b.contact.github}</p>
       </header>
@@ -118,11 +118,10 @@ export default function PrintPage() {
 
       {/* 教育 */}
       <section className="print-avoid-break mt-3">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">教育 · 荣誉 · 证书</h2>
+        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">教育</h2>
         <p className="text-[11.5px]">
           <strong>{resumeData.education.school}</strong> ｜ {resumeData.education.major} ｜ {resumeData.education.period}
         </p>
-        <p className="text-[11.5px] text-neutral-700">{resumeData.education.extras}</p>
       </section>
     </main>
   );

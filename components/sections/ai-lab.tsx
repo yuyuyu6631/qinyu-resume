@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, FlaskConical } from "lucide-react";
 import { resumeData } from "@/lib/resume";
-import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -23,10 +22,10 @@ export function AiLab() {
             <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-background/60">AI Testing Lab</p>
           </div>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            AI 应用测试实验室
+            AI 应用测试实践
           </h2>
           <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-background/70">
-            {lab.headline}：从输入到回归的完整测试链路，全部来自真实项目的可复现方法。
+            {lab.disclaimer}
           </p>
         </motion.div>
 
@@ -84,30 +83,6 @@ export function AiLab() {
             </motion.div>
           ))}
         </div>
-
-        {/* 方法论标签 */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55, delay: 0.2, ease }}
-          className="mt-8 flex flex-wrap gap-2"
-        >
-          {lab.methods.map((mth) => (
-            <span
-              key={mth}
-              className={cn(
-                "rounded-full border border-background/20 px-3 py-1 font-mono text-[11.5px] tracking-tight text-background/75"
-              )}
-            >
-              {mth}
-            </span>
-          ))}
-        </motion.div>
-
-        <p className="mt-8 text-[12px] leading-relaxed text-background/40">
-          {lab.disclaimer}
-        </p>
       </div>
     </section>
   );

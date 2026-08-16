@@ -2,28 +2,28 @@
 
 Test Development Engineer | AI Testing | Automation | ATE / Semiconductor | Windows Desktop Testing
 
-电话: 18662732817 | 邮箱: 1642732247@qq.com | GitHub: https://github.com/yuyuyu6631/qinyu-resume | 城市: 深圳 | 期望薪资: 15-20K | 可随时到岗
+电话: 18662732817 | 邮箱: 1642732247@qq.com | GitHub: https://github.com/yuyuyu6631/qinyu-resume | 城市: 深圳 | 在职，到岗时间可协商
 
 职业定位
 专注软件测试开发、AI 应用测试与半导体 ATE 上位机测试。
-软件工程本科，1 年测试开发经验：半导体 ATE 上位机软件测试 + AI 智能体平台 1000+ 用例与 50+ API 自动巡检。接口、自动化与 AI 应用测试均可独立负责，擅长结合接口返回、SQL 与日志定位问题。
+软件工程本科，1 年+测试 / 测试开发经验：半导体 ATE 上位机软件测试 + AI 智能体平台 1000+ 用例与 50+ API 自动巡检。接口、自动化与 AI 应用测试均可独立负责，擅长结合接口返回、SQL 与日志定位问题。
 
 核心亮点
 - 1000+ 独立设计与执行的功能 / 接口 / 回归用例（覆盖 4 条产品线，回归基线持续维护）
 - 50+ 核心 API 自动巡检（MeterSphere 定时执行、断言、异常钉钉告警）
 - 10+ 企业站点测试环境搭建（摄像头 / 分机 / AI 盒子现场联调）
-- 1 年 测试开发经验（半导体 ATE 上位机 · AI 智能体平台）
+- 1 年+ 测试 / 测试开发经验（软件测试 → 测试开发 → ATE）
 
 专业技能
-- Test Development（熟练）: Pytest / 数据驱动 / 用例设计（等价类 / 边界值 / 场景法 / 状态迁移） / XMind / Jira / 禅道
-- Automation（熟练）: Python / Playwright / Selenium / Appium（了解） / Jenkins / CI/CD 流水线
-- API Testing（熟练）: Postman / Apipost / MeterSphere / requests / Charles / Fiddler / HTTP / HTTPS / WebSocket
-- AI Testing（专项）: LLM-to-SQL / Agent Workflow / Tool Calling / 评估集构建 / 评测指标 / Prompt 偏差分析 / Badcase 沉淀
-- Desktop Testing（熟练）: Windows 上位机 / ATE 设备通信链路 / UI 自动化 / 稳定性 / 压力测试
-- Performance（掌握）: JMeter / 长时间压测 / 资源占用监控 / 响应延迟分析
-- CI / CD（掌握）: Jenkins / MeterSphere 定时巡检 / 钉钉告警 / Git
-- Linux & Shell（掌握）: Linux / Shell / 日志分析 / Docker / 服务状态排查
-- SQL & Data（掌握）: MySQL / SQL 数据校验 / Redis / 测试数据构造
+- Test Development（主力）: Pytest / 数据驱动 / 用例设计（等价类 / 边界值 / 场景法 / 状态迁移） / XMind / Jira / 禅道
+- Automation（主力）: Python / Playwright / Selenium / Jenkins / CI/CD 流水线
+- API Testing（实际项目使用）: Postman / Apipost / MeterSphere / requests / Charles / Fiddler / HTTP / HTTPS / WebSocket
+- AI Testing（专项实践）: LLM-to-SQL / Agent Workflow / Tool Calling / Badcase 沉淀 / Prompt 偏差分析
+- Desktop Testing（当前工作方向）: Windows 上位机 / ATE 设备通信链路 / UI 自动化 / 稳定性 / 压力测试
+- Performance（实际项目使用）: JMeter / 长时间压测 / 资源占用监控 / 响应延迟分析
+- CI / CD（实际项目使用）: Jenkins / MeterSphere 定时巡检 / 钉钉告警 / Git
+- Linux & Shell（实际项目使用）: Linux / Shell / 日志分析 / Docker / 服务状态排查
+- SQL & Data（实际项目使用）: MySQL / SQL 数据校验 / Redis / 测试数据构造
 
 工作经历
 - 长川科技股份有限公司 | 软件测试 | 2026.07 — 至今 | 半导体芯片测试机（ATE）上位机软件 · 车规级功放芯片 / 功耗芯片测试 · 上市公司
@@ -31,11 +31,10 @@ Test Development Engineer | AI Testing | Automation | ATE / Semiconductor | Wind
   * 黑盒用例与 UI 自动化: 上位机软件按黑盒方法设计用例，功能路径、权限、异常输入、边界数据逐条覆盖；搭建界面 UI 自动化，实现主流程与核心操作路径自动回归。
   * 设备通信接口: 上位机与测控单元的指令下发、参数配置、数据采集、状态回传逐项验证，异常响应和链路状态变化单列场景。
   * 稳定性与性能: 组织长时间连续运行压力测试，监测资源占用、响应延迟与运行状态，记录异常现象并分析稳定性风险。
-  * 流程与交付: 需求评审、用例评审、缺陷跟踪、发布前验证各环节按规范流程执行并留痕；兼容矩阵、版本回归与测试报告归档。
 - 北京零壹视界科技有限公司 | 测试开发（实习） | 2025.09 — 2026.06 | AI 智能体与低代码平台 · 数据智能体 / 企业写作智能体 / 低代码平台 / 智能体开发平台
-  * 用例体系: 独立设计并执行 1000+ 条功能、接口和回归用例，覆盖四条产品线，回归基线持续维护。
+  * 用例体系: 功能、接口与回归用例设计执行，覆盖四条产品线，回归基线持续维护。
   * 权限与异常分支: 多租户、多角色权限模块的授权边界、数据隔离、模块联动、异常分支逐条设计场景。
-  * API 巡检: 基于 MeterSphere 搭建 50+ 核心 API 自动巡检，动态参数、断言、定时任务、钉钉告警配齐，接口回归无需人工值守。
+  * API 巡检: 基于 MeterSphere 搭建核心 API 自动巡检，动态参数、断言、定时任务、钉钉告警配齐，接口回归无需人工值守。
   * AI 链路定位: 验证意图识别、工具选择、参数提取、调用链路和异常重试；接口 + SQL + 业务规则 + 人工复核四路对照，定位模型输出偏差、工具调用失败和数据口径不一致。
 - 湖南展通佳创能源有限公司 | 软件测试（实习） | 2025.07 — 2025.09 | 燃气企业数字化系统 · 管理端 / 配送端 / 用户端
   * 业务梳理: 逐项梳理订单处理、配送调度、客户资料、安检巡检、设备联动、数据统计等业务问题，转化为可验证的需求与测试范围。
@@ -61,7 +60,7 @@ Test Development Engineer | AI Testing | Automation | ATE / Semiconductor | Wind
   * 多环境配置冲突 → 参数管理与执行逻辑分离
   * 缺陷报告自动生成：截图 / JUnit / HTML / Markdown
   * 结果: 冒烟、核心流程与协议文案回归自动化，缺陷报告含严重级别、复现步骤与修复建议。
-- CICC 中金点睛（Text-to-SQL） | 测试开发工程师 | 2025.10 — 2026.01 | AI Testing / LLM-to-SQL
+- 中金点睛项目（Text-to-SQL） | 测试开发工程师 | 2025.10 — 2026.01 | AI Testing / LLM-to-SQL · 零壹视界期间负责
   * 问题与方法: 企业数据分析平台以自然语言提问生成数据查询，模型输出偏差、工具调用失败与数据口径不一致是高发风险。 正常、异常、边界、无权限、空结果、口径不一致六类场景全覆盖；Text-to-SQL 五维验证（用户问题、SQL 生成、查询结果、页面展示、业务口径）；Postman、MeterSphere 验证接口，SQL 核对 AI 返回与真实业务数据一致性。
   * 五维验证：问题 → SQL → 结果 → 展示 → 口径逐项核对
   * 接口参数、返回结构、状态码、异常提示、权限控制验证
@@ -69,9 +68,8 @@ Test Development Engineer | AI Testing | Automation | ATE / Semiconductor | Wind
   * 结果: 建立 LLM-to-SQL 专项测试方法，模型输出偏差可定位、可复现、可回归。
 
 AI 应用测试方法论
-- LLM-to-SQL: 五维验证：问题 / SQL / 结果 / 展示 / 口径；SQL 核对真实业务数据一致性；准确率 / 召回评测（CICC 中金点睛项目（真实））
+- LLM-to-SQL: 用户问题 → SQL 生成 → 查询结果 → 页面展示 → 业务口径逐项核对；SQL 核对真实业务数据一致性（中金点睛项目（真实））
 - Agent Workflow: 意图识别与参数提取校验；调用链路与异常重试验证；多轮对话上下文一致性（零壹视界 AI 智能体平台（真实））
 - Skill / Tool Calling: 工具选择正确性；结构化输出校验（参数格式 / 类型）；Badcase 归因：模型 / 工具 / 数据（AI 链路四路对照定位（真实））
 
 教育: 湖南涉外经济学院 | 软件工程 · 本科 | 2022 — 2026
-荣誉与证书: 荣誉与证书：校级「优秀共青团员」· 优秀学生干部 · 大学英语四级（CET-4）· 普通话二级乙等 · C1 驾照

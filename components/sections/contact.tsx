@@ -29,7 +29,7 @@ export function Contact() {
             期待与您交流
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-background/70">
-            正在寻找深圳地区测试开发 / AI 测试方向岗位，坐标深圳 · {b.contact.salary} · {b.contact.availability}。
+            正在寻找深圳地区测试开发 / AI 测试方向岗位。
           </p>
         </motion.div>
 

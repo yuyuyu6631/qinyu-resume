@@ -97,10 +97,8 @@ def main():
     set_font(p.add_run(b["contact"]["phone"]), size=10)
     set_font(p.add_run(" ｜ 邮箱 "), size=10, color=MUTED)
     add_hyperlink(p, f"mailto:{b['contact']['email']}", b["contact"]["email"])
-    set_font(p.add_run(" ｜ 本科 · 软件工程 · 1 年经验 ｜ 期望城市："), size=10, color=MUTED)
+    set_font(p.add_run(" ｜ 本科 · 软件工程 · 1 年+测试 / 测试开发经验 ｜ 期望城市："), size=10, color=MUTED)
     set_font(p.add_run(b["contact"]["location"]), size=10)
-    set_font(p.add_run(" ｜ 期望薪资："), size=10, color=MUTED)
-    set_font(p.add_run(b["contact"]["salary"]), size=10)
     set_font(p.add_run(" ｜ "), size=10, color=MUTED)
     set_font(p.add_run(b["contact"]["availability"]), size=10)
     p.paragraph_format.space_after = Pt(3)
@@ -192,13 +190,11 @@ def main():
         bullet("结果", pr["result"])
 
     # 教育
-    section("教育 · 荣誉 · 证书")
+    section("教育")
     edu = R["education"]
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(2)
     set_font(p.add_run(f"{edu['school']}｜{edu['major']}｜{edu['period']}"), bold=True)
-    p = doc.add_paragraph()
-    set_font(p.add_run(edu["extras"]), size=9.5, color=MUTED)
 
     # 输出
     os.makedirs(os.path.join(ROOT, "public"), exist_ok=True)

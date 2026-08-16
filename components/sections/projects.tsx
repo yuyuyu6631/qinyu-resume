@@ -17,10 +17,10 @@ export function Projects() {
           transition={{ duration: 0.6, ease }}
           className="mb-14"
         >
-          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Engineering Case Studies</p>
+          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Case Studies</p>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">代表性项目</h2>
           <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">
-            以工程案例的方式呈现：问题、方法、技术、测试策略与结果。每个案例都经过面试追问检验。
+            以工程案例的方式呈现：问题、技术方案与结果。
           </p>
         </motion.div>
 
@@ -61,12 +61,9 @@ export function Projects() {
                       <strong className="font-semibold text-ink">Problem · </strong>
                       {p.problem}
                     </p>
-                    <p>
-                      <strong className="font-semibold text-ink">Approach · </strong>
-                      {p.approach}
-                    </p>
                     <div>
-                      <strong className="font-semibold text-ink">Testing Strategy · </strong>
+                      <strong className="font-semibold text-ink">Technical Approach · </strong>
+                      <p className="mt-1">{p.approach}</p>
                       <ul className="mt-1.5 flex flex-col gap-1.5">
                         {p.strategy.map((s) => (
                           <li key={s} className="flex gap-2.5">

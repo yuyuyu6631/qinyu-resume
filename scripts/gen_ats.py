@@ -23,7 +23,7 @@ def build_lines() -> list:
     L.append(
         f"电话: {b['contact']['phone']} | 邮箱: {b['contact']['email']} | "
         f"GitHub: {b['contact']['github']} | 城市: {b['contact']['location']} | "
-        f"期望薪资: {b['contact']['salary']} | {b['contact']['availability']}"
+        f"{b['contact']['availability']}"
     )
     L.append("")
     L.append("职业定位")
@@ -59,7 +59,6 @@ def build_lines() -> list:
     L.append("")
     edu = R["education"]
     L.append(f"教育: {edu['school']} | {edu['major']} | {edu['period']}")
-    L.append(f"荣誉与证书: {edu['extras']}")
     return L
 
 
@@ -77,7 +76,7 @@ def main():
     md.append(f"# {b['name']} · {b['brand']['primary']}\n")
     md.append(f"> {b['brand']['primary']} · {' · '.join(b['brand']['subs'])}\n")
     md.append(f"> 电话 {b['contact']['phone']} · 邮箱 {b['contact']['email']} · GitHub {b['contact']['github']}\n")
-    md.append(f"> {b['contact']['location']} · {b['contact']['salary']} · {b['contact']['availability']}\n")
+    md.append(f"> {b['contact']['location']} · {b['contact']['availability']}\n")
     md.append("\n## 职业定位\n")
     md.append(f"{b['positioning']}\n")
     md.append(f"{b['summary']}\n")
@@ -108,7 +107,6 @@ def main():
     edu = R["education"]
     md.append("\n## 教育\n")
     md.append(f"{edu['school']} · {edu['major']} · {edu['period']}\n")
-    md.append(f"{edu['extras']}\n")
     md_path = os.path.join(ROOT, "docs", "resume.md")
     with open(md_path, "w", encoding="utf-8") as f:
         f.write("".join(md))

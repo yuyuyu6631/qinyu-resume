@@ -20,7 +20,7 @@ const b = resumeData.basics;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${b.name} · ${b.brand.primary} — 个人简历`,
+  title: `${b.name} · ${b.brand.primary}`,
   description:
     `${b.name}，${b.title}。专注 AI 应用测试（LLM-to-SQL / Agent Workflow / Tool Calling）、接口与 UI 自动化，拥有半导体 ATE 上位机测试经验。1000+ 用例 · 50+ API 自动巡检。`,
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     url: siteUrl,
     siteName: `${b.name} · Resume`,
-    title: `${b.name} · ${b.brand.primary} — 个人简历`,
+    title: `${b.name} · ${b.brand.primary}`,
     description: `${b.brand.primary} · AI Testing · Automation · ATE / Semiconductor。${b.positioning}`,
     images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: `${b.name} · ${b.brand.primary}` }],
   },
