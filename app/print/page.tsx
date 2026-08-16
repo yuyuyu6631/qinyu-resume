@@ -25,7 +25,7 @@ export default function PrintPage() {
       {/* 定位 */}
       <p className="print-avoid-break mt-3 rounded-sm border-l-[3px] border-neutral-900 bg-neutral-50 px-3 py-2 text-[12px]">
         <strong>定位：</strong>
-        {b.positioning} 现于半导体芯片测试机上市公司负责 ATE 上位机软件测试；此前在 AI 智能体平台独立完成 1000+ 用例与 50+ 核心 API 自动巡检。接口、自动化与 AI 应用测试均可独立负责。
+        {b.positioning} {b.summary}
       </p>
 
       {/* 核心亮点 */}
