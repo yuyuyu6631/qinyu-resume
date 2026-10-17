@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { resumeData } from "@/lib/resume";
 
 export const metadata: Metadata = {
@@ -12,6 +13,16 @@ const b = resumeData.basics;
 export default function PrintPage() {
   return (
     <main className="mx-auto max-w-[820px] px-4 py-8 text-[13.5px] leading-relaxed text-neutral-900">
+      <div className="no-print mb-5 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-2.5">
+        <p className="text-[12px] text-neutral-500">这是 A4 打印版简历，可直接「打印 / 另存为 PDF」。</p>
+        <Link
+          href="/"
+          className="shrink-0 font-mono text-[12px] text-neutral-500 underline-offset-4 transition-colors hover:text-neutral-900 hover:underline"
+        >
+          ← 返回网站
+        </Link>
+      </div>
+
       {/* 头部 */}
       <header className="border-b-2 border-neutral-900 pb-3">
         <h1 className="text-[30px] font-bold tracking-[0.2em]">{b.name}</h1>

@@ -29,6 +29,11 @@
     scroll-behavior: smooth;
   }
 
+  /* 锚点跳转时避开 sticky 导航（h-16） */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     text-wrap: pretty;

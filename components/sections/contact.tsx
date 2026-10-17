@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Phone, Mail, Download, Github, MapPin } from "lucide-react";
+import { Phone, Mail, Download, FileText, Github, MapPin } from "lucide-react";
 import { resumeData } from "@/lib/resume";
 import { asset } from "@/lib/asset";
 
@@ -12,7 +12,8 @@ export function Contact() {
   const items = [
     { icon: Phone, label: "TEL", value: b.contact.phone, href: `tel:${b.contact.phone}` },
     { icon: Mail, label: "EMAIL", value: b.contact.email, href: `mailto:${b.contact.email}` },
-    { icon: Download, label: "RESUME", value: "下载 PDF 简历", href: asset("/秦宇-测试工程师.pdf"), download: true },
+    { icon: Download, label: "RESUME · PDF", value: "下载 PDF 简历", href: asset("/秦宇-测试工程师.pdf"), download: true },
+    { icon: FileText, label: "RESUME · DOCX", value: "下载 Word 简历", href: asset("/秦宇-测试工程师.docx"), download: true },
     { icon: Github, label: "GITHUB", value: "yuyuyu6631/qinyu-resume", href: b.contact.github, external: true },
   ];
   return (
@@ -38,7 +39,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
-          className="mt-12 grid gap-px overflow-hidden rounded-xl border border-background/15 bg-background/15 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid gap-px overflow-hidden rounded-xl border border-background/15 bg-background/15 sm:grid-cols-2 lg:grid-cols-5"
         >
           {items.map((it) => (
             <a
