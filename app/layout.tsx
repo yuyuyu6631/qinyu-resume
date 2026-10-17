@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${b.name} · ${b.brand.primary}`,
   description:
-    `${b.name}，${b.title}。专注 AI 应用测试（LLM-to-SQL / Agent Workflow / Tool Calling）、接口与 UI 自动化，拥有半导体 ATE 上位机测试经验。1000+ 用例 · 50+ API 自动巡检。`,
+    `${b.name}，${b.title}。专注 AI 应用测试（LLM-to-SQL / Agent Workflow / Tool Calling）、接口与 UI 自动化，拥有半导体 AOI 设备软件与 ATE 上位机测试经验。1000+ 用例 · 50+ API 自动巡检。`,
   keywords: [
     "测试开发工程师", "AI 测试", "软件测试", "ATE 上位机测试", "半导体测试",
-    "Python", "Pytest", "Playwright", "接口自动化", "LLM-to-SQL", "Agent 测试", "深圳",
+    "Python", "Pytest", "Playwright", "接口自动化", "LLM-to-SQL", "Agent 测试", "AOI 设备软件测试", b.contact.location,
   ],
   authors: [{ name: b.name }],
   openGraph: {
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: `${b.name} · Resume`,
     title: `${b.name} · ${b.brand.primary}`,
-    description: `${b.brand.primary} · AI Testing · Automation · ATE / Semiconductor。${b.positioning}`,
+    description: `${b.brand.primary} · AI Testing · Automation · AOI / ATE。${b.positioning}`,
     images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: `${b.name} · ${b.brand.primary}` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${b.name} · ${b.brand.primary}`,
-    description: `${b.brand.primary} · AI Testing · Automation · ATE / Semiconductor`,
+    description: `${b.brand.primary} · AI Testing · Automation · AOI / ATE`,
     images: [`${siteUrl}/og.png`],
   },
   robots: { index: true, follow: true },

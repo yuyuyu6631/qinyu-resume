@@ -21,7 +21,7 @@ MUTED = RGBColor(0x66, 0x66, 0x66)
 BLUE = RGBColor(0x05, 0x63, 0xC1)  # 链接色（Word 默认超链接蓝）
 
 
-def set_font(run, name_cn="微软雅黑", name_en="Calibri", size=10.5, bold=False, color=None):
+def set_font(run, name_cn="Noto Sans CJK SC", name_en="Calibri", size=10.5, bold=False, color=None):
     run.font.name = name_en
     run.font.size = Pt(size)
     run.font.bold = bold
@@ -48,7 +48,7 @@ def add_hyperlink(paragraph, url, text, size=10.5):
     rPr = run.makeelement(qn("w:rPr"), {})
     rFonts = rPr.makeelement(qn("w:rFonts"), {})
     rFonts.set(qn("w:ascii"), "Calibri")
-    rFonts.set(qn("w:eastAsia"), "微软雅黑")
+    rFonts.set(qn("w:eastAsia"), "Noto Sans CJK SC")
     rPr.append(rFonts)
     color = rPr.makeelement(qn("w:color"), {qn("w:val"): "0563C1"})
     rPr.append(color)
@@ -78,17 +78,23 @@ def main():
     style = doc.styles["Normal"]
     style.font.name = "Calibri"
     style.font.size = Pt(10.5)
-    style.element.rPr.rFonts.set(qn("w:eastAsia"), "微软雅黑")
+    style.paragraph_format.line_spacing = 1.15
+    style.paragraph_format.space_after = Pt(3)
+    style.element.rPr.rFonts.set(qn("w:eastAsia"), "Noto Sans CJK SC")
 
     b = R["basics"]
 
     # 姓名 + 头衔
-    p = doc.add_paragraph()
+    p = doc.add_paragraph(style="Title")
     set_font(p.add_run(b["name"]), size=26, bold=True, color=INK)
+    pPr = p._p.get_or_add_pPr()
+    pBdr = pPr.makeelement(qn("w:pBdr"), {})
+    pBdr.append(pPr.makeelement(qn("w:bottom"), {qn("w:val"): "nil"}))
+    pPr.append(pBdr)
     p.paragraph_format.space_after = Pt(2)
 
     p = doc.add_paragraph()
-    set_font(p.add_run(f"{b['brand']['primary']} · {' · '.join(b['brand']['subs'])}"), size=11, bold=True, color=BLUE)
+    set_font(p.add_run(f"{b['brand']['primary']} · {' · '.join(b['brand']['subs'])}"), size=11, bold=True, color=INK)
     p.paragraph_format.space_after = Pt(4)
 
     # 联系方式（真实文本，ATS 可解析）
@@ -97,7 +103,7 @@ def main():
     set_font(p.add_run(b["contact"]["phone"]), size=10)
     set_font(p.add_run(" ｜ 邮箱 "), size=10, color=MUTED)
     add_hyperlink(p, f"mailto:{b['contact']['email']}", b["contact"]["email"])
-    set_font(p.add_run(" ｜ 本科 · 软件工程 · 1 年+测试 / 测试开发经验 ｜ 期望城市："), size=10, color=MUTED)
+    set_font(p.add_run(" ｜ 本科 · 软件工程 · 1 年+测试 / 测试开发经验 ｜ 现居："), size=10, color=MUTED)
     set_font(p.add_run(b["contact"]["location"]), size=10)
     set_font(p.add_run(" ｜ "), size=10, color=MUTED)
     set_font(p.add_run(b["contact"]["availability"]), size=10)
@@ -116,16 +122,14 @@ def main():
     # 定位
     p = doc.add_paragraph()
     set_font(p.add_run("职业定位："), bold=True, size=10.5)
-    set_font(p.add_run(
-        f"{b['positioning']} 现于半导体芯片测试机上市公司负责 ATE 上位机软件测试（黑盒 + UI 自动化）；"
-        f"此前在 AI 智能体与低代码平台独立完成 1000+ 用例与 50+ 核心 API 自动巡检。"
-    ))
+    set_font(p.add_run(f"{b['positioning']} {b['summary']}"))
     keep_together(p)
 
     def section(title):
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(10)
         p.paragraph_format.space_after = Pt(4)
+        p.paragraph_format.keep_with_next = True
         set_font(p.add_run(title), size=12.5, bold=True, color=INK)
         pPr = p._p.get_or_add_pPr()
         pBdr = pPr.makeelement(qn("w:pBdr"), {})
@@ -168,9 +172,11 @@ def main():
         set_font(p.add_run(f"[{exp['role']}]　"), size=9.5, color=MUTED)
         set_font(p.add_run(exp["period"]), size=9.5, color=MUTED)
         keep_together(p)
+        p.paragraph_format.keep_with_next = True
         p = doc.add_paragraph()
         p.paragraph_format.space_after = Pt(2)
         set_font(p.add_run(exp["industry"]), size=9.5, color=MUTED)
+        p.paragraph_format.keep_with_next = True
         for b2 in exp["bullets"]:
             bullet(b2["lead"], b2["text"])
 
@@ -184,6 +190,7 @@ def main():
         set_font(p.add_run(f"[{pr['badge']}]　"), size=9.5, color=MUTED)
         set_font(p.add_run(pr["period"]), size=9.5, color=MUTED)
         keep_together(p)
+        p.paragraph_format.keep_with_next = True
         bullet("问题与方法", f"{pr['problem']} {pr['approach']}")
         for s in pr["strategy"]:
             bullet("", s)
