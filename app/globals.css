@@ -133,3 +133,66 @@
 
 #ai-lab :focus-visible, #contact :focus-visible { outline-color: hsl(229 90% 80%); }
 @media print { body { background: white !important; } }
+
+/* Compact resume: two content sections, shared by web and print. */
+.brief-shell { max-width: 1040px; margin: 0 auto; padding: 32px 28px 24px; font-size: 14px; line-height: 1.7; }
+.brief-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brief-header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -.04em; line-height: 1.3; }
+.brief-header h1 span { display: inline-block; margin-left: 16px; font-size: 16px; font-weight: 500; letter-spacing: 0; color: hsl(var(--ink-soft)); }
+.brief-meta { margin-top: 5px; font-size: 12px; color: hsl(var(--ink-faint)); }
+.brief-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.brief-actions a, .brief-actions button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 12px; border-radius: 7px; font-size: 13px; }
+.brief-actions a:hover { background: hsl(var(--muted)); }
+.brief-actions .brief-download { background: hsl(var(--ink)); color: white; margin-left: 6px; }
+.brief-actions .brief-download:hover { background: hsl(var(--accent)); }
+.brief-intro { margin: 22px 0 12px; max-width: 66ch; font-size: 15px; color: hsl(var(--ink-soft)); }
+.brief-tools { display: flex; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid hsl(var(--border)); font-size: 12px; color: hsl(var(--ink-faint)); }
+.brief-tools strong { color: hsl(var(--ink-soft)); font-weight: 500; flex-shrink: 0; }
+.brief-section { margin-top: 22px; }
+.brief-section h2 { margin-bottom: 10px; font-size: 15px; font-weight: 700; }
+.brief-job { display: grid; grid-template-columns: 224px 1fr; gap: 24px; padding: 13px 0; border-top: 1px solid hsl(var(--border)); }
+.brief-job h3 { font-size: 14px; font-weight: 600; }
+.brief-job-meta p { font-size: 12px; color: hsl(var(--ink-faint)); }
+.brief-job-work { color: hsl(var(--ink-soft)); }
+.brief-period { font-variant-numeric: tabular-nums; margin-top: 2px; }
+.brief-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.brief-project { padding-top: 13px; border-top: 1px solid hsl(var(--border)); }
+.brief-project > div { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.brief-project h3 { font-size: 14px; font-weight: 600; }
+.brief-project span { color: hsl(var(--ink-faint)); font-size: 11px; }
+.brief-project > p { margin-top: 8px; color: hsl(var(--ink-soft)); font-size: 13px; }
+.brief-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; margin-top: 24px; padding-top: 14px; border-top: 1px solid hsl(var(--border)); font-size: 12px; color: hsl(var(--ink-faint)); }
+.brief-footer a { text-decoration: underline; text-underline-offset: 3px; }
+.brief-print-contact { display: none; }
+@media (max-width: 640px) {
+ .brief-shell { padding: 22px 20px 24px; }
+ .brief-header { align-items: flex-start; flex-direction: column; gap: 12px; }
+ .brief-header h1 span { font-size: 14px; margin-left: 12px; }
+ .brief-actions { gap: 2px; margin-left: -12px; }
+ .brief-intro { margin-top: 18px; font-size: 14px; }
+ .brief-tools { gap: 12px; }
+ .brief-job { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+ .brief-job-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+ .brief-job-meta h3 { flex-basis: 100%; }
+ .brief-period { margin-top: 0; }
+ .brief-job-work { font-size: 13px; line-height: 1.8; }
+ .brief-projects { grid-template-columns: 1fr; gap: 18px; }
+ .brief-section { margin-top: 18px; }
+}
+@media print {
+ @page { size: A4; margin: 12mm 14mm; }
+ .brief-shell { max-width: none; padding: 0; font-size: 10pt; line-height: 1.6; }
+ .brief-header h1 { font-size: 23pt; }
+ .brief-header h1 span { font-size: 12pt; }
+ .brief-intro { font-size: 10pt; margin-top: 14px; }
+ .brief-tools { padding-bottom: 12px; font-size: 9pt; }
+ .brief-section { margin-top: 16px; }
+ .brief-section h2 { font-size: 11pt; margin-bottom: 5px; }
+ .brief-job { grid-template-columns: 175px 1fr; gap: 20px; padding: 10px 0; break-inside: avoid; }
+ .brief-job h3, .brief-project h3 { font-size: 10pt; }
+ .brief-job-meta p { font-size: 8.5pt; }
+ .brief-job-work, .brief-project > p { font-size: 9.5pt; }
+ .brief-project { break-inside: avoid; padding-top: 10px; }
+ .brief-footer { font-size: 8.5pt; margin-top: 18px; }
+ .brief-print-contact { display: block; }
+}
