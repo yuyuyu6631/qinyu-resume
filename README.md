@@ -4,7 +4,8 @@
 
 - `data/brief.json`：当前呈现的精简正文。
 - `data/resume.json`：公司、岗位、任职日期与教育信息。历史长版内容仍保留在数据中，不在首页重复展示。
-- `components/resume-brief.tsx`：首页与 `/print/` 共用页面。
+- `components/resume-brief.tsx`：首页与 `/print/` 共用内容，分别使用视觉开屏与简洁打印排版。
+- `app/editorial.css`：深墨蓝开屏、轨道图形、时间线与项目卡片的响应式视觉设计。
 - `scripts/gen_brief.mjs`：生成一页 Word、ATS 文字和 Markdown。
 
 ```sh
@@ -19,4 +20,4 @@ PDF 由 `/print/` 页面打印生成；Windows 可使用 `npm run gen:pdf`。PDF
 
 推送 `main` 会自动构建并部署至 https://yuyuyu6631.github.io/qinyu-resume/ 。
 
-本次检查：360/390/768/1440px 无横向溢出；390px 页面高约 1230px；主页面两节内容；浏览器生成的 PDF 及 LibreOffice 渲染的 Word 均为一页。页面、打印页和 Word 已检查截图。类型检查与生产构建通过。
+本次检查：360/390/768/1440px 无横向溢出；390px 页面高约 1405px，1440px 一屏完整显示；主页面两节正文；浏览器生成的 PDF 及 LibreOffice 渲染的 Word 均为一页。页面、打印页和 Word 已检查截图。类型检查与生产构建通过。设计说明见 `docs/compact-design.md`。
