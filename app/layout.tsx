@@ -20,36 +20,39 @@ const b = resumeData.basics;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${b.name} · ${b.brand.primary}`,
+  title: `${b.name} · ${b.title}｜AI 应用测试 · 自动化 · 半导体 ATE`,
   description:
-    `${b.name}，${b.title}。专注 AI 应用测试（LLM-to-SQL / Agent Workflow / Tool Calling）、接口与 UI 自动化，拥有半导体 ATE 上位机测试经验。1000+ 用例 · 50+ API 自动巡检。`,
+    `${b.name}，${b.title}。软件工程本科，1 年+测试 / 测试开发经验：半导体 ATE 上位机软件测试 + AI 智能体平台 1000+ 用例与 50+ API 自动巡检。专注 AI 应用测试、接口与 UI 自动化。`,
   keywords: [
-    "测试开发工程师", "AI 测试", "软件测试", "ATE 上位机测试", "半导体测试",
-    "Python", "Pytest", "Playwright", "接口自动化", "LLM-to-SQL", "Agent 测试", "深圳",
+    "秦宇", "测试开发工程师", "软件测试", "AI 测试", "AI 应用测试", "ATE 上位机测试",
+    "半导体测试", "Python", "Pytest", "Playwright", "接口自动化", "LLM-to-SQL",
+    "Agent 测试", "MeterSphere", "深圳", "简历",
   ],
   authors: [{ name: b.name }],
+  creator: b.name,
   openGraph: {
     type: "profile",
     locale: "zh_CN",
     url: siteUrl,
-    siteName: `${b.name} · Resume`,
-    title: `${b.name} · ${b.brand.primary}`,
+    siteName: `${b.name} · ${b.title}`,
+    title: `${b.name} · ${b.title}`,
     description: `${b.brand.primary} · AI Testing · Automation · ATE / Semiconductor。${b.positioning}`,
-    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: `${b.name} · ${b.brand.primary}` }],
+    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: `${b.name} · ${b.title}` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${b.name} · ${b.brand.primary}`,
+    title: `${b.name} · ${b.title}`,
     description: `${b.brand.primary} · AI Testing · Automation · ATE / Semiconductor`,
     images: [`${siteUrl}/og.png`],
   },
   robots: { index: true, follow: true },
+  alternates: { canonical: siteUrl },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#F2EEE6",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -57,11 +60,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "Person",
     name: b.name,
+    alternateName: b.nameEn,
     jobTitle: b.title,
     telephone: b.contact.phone,
     email: b.contact.email,
     address: { "@type": "PostalAddress", addressLocality: b.contact.location },
     url: siteUrl,
+    sameAs: [b.contact.github, siteUrl],
     knowsAbout: [
       "软件测试", "测试开发", "AI 应用测试", "LLM-to-SQL", "Agent Workflow",
       "Tool Calling", "接口自动化", "UI 自动化", "ATE 上位机测试", "Python", "Pytest", "Playwright",
@@ -75,9 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-dvh antialiased">
-        {children}
-      </body>
+      <body className="min-h-dvh antialiased">{children}</body>
     </html>
   );
 }

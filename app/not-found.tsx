@@ -1,17 +1,23 @@
-import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { route } from "@/lib/asset";
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-dvh place-items-center bg-background px-6 text-center">
-      <div>
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">404</p>
-        <h1 className="mt-3 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-          页面不存在
+    <main className="relative grid min-h-dvh place-items-center overflow-hidden px-6">
+      <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="relative text-center">
+        <p className="eyebrow">404 / page not found</p>
+        <h1 className="mt-5 text-[clamp(3rem,10vw,6rem)] font-extrabold leading-none tracking-tightest">
+          页面不存在<span className="text-accent">。</span>
         </h1>
-        <p className="mt-3 text-[15px] text-ink-faint">你访问的链接可能已失效或被移动。</p>
-        <div className="mt-8 flex justify-center gap-3">
-          <a href="/" className={buttonVariants()}>返回首页</a>
-          <a href="/print/" className={buttonVariants({ variant: "outline" })}>A4 简历版</a>
+        <p className="mt-4 text-[14px] text-ink-soft">你访问的链接可能已失效，或地址输入有误。</p>
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <Link href={route("/")} className="btn-ink">
+            返回首页 <span aria-hidden="true">→</span>
+          </Link>
+          <Link href={route("/print/")} className="btn-outline">
+            A4 一页简历
+          </Link>
         </div>
       </div>
     </main>

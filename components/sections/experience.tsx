@@ -1,105 +1,88 @@
-"use client";
-
-import { motion } from "motion/react";
 import { resumeData } from "@/lib/resume";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { SectionHead } from "@/components/section-head";
+import { Reveal } from "@/components/ui/reveal";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const stageLabel: Record<string, { label: string; className: string }> = {
-  "Software Testing": { label: "01 · Software Testing", className: "bg-muted text-ink-soft" },
-  "AI Testing": { label: "02 · Test Development · AI Testing", className: "bg-ink text-background" },
-  "Windows Desktop / ATE": { label: "03 · Test Development · ATE / Desktop", className: "bg-ink text-background" },
-};
-
+/** 02 · 工作经历 */
 export function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease }}
-        className="mb-14"
-      >
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Career Evolution</p>
-        <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-          从软件测试到 AI Testing 与 ATE
-        </h2>
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">
-          软件测试 → 测试开发 → AI 应用测试 → 半导体 ATE。
-        </p>
-      </motion.div>
-
-      <div className="relative">
-        {/* 成长线 */}
-        <div
-          className="absolute left-[9px] top-2 bottom-2 w-px bg-border md:left-[217px]"
-          aria-hidden="true"
+    <section id="experience" className="border-b border-rule">
+      <div className="container-x section-pad">
+        <SectionHead
+          index="02"
+          en="experience / 工作经历"
+          title={
+            <>
+              从软件测试到
+              <br />
+              AI Testing 与 ATE
+            </>
+          }
+          desc="三段经历，一条清晰的成长线：企业数字化系统 → AI 智能体平台测试开发 → 半导体 ATE 上位机测试。每段都有独立的负责范围与交付物。"
+          meta="2025.07 — present"
         />
-        <div className="flex flex-col gap-10 md:gap-14">
-          {resumeData.experience.map((exp, i) => {
-            const stage = stageLabel[exp.growth] ?? { label: exp.growth, className: "bg-muted text-ink-soft" };
-            return (
-              <motion.article
-                key={exp.company}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.06, ease }}
-                className="relative grid gap-4 pl-8 md:grid-cols-[200px_1fr] md:gap-10 md:pl-0"
-              >
-                {/* 节点 */}
-                <span
-                  className="absolute left-0 top-1.5 size-[19px] rounded-full border-4 border-background bg-ink md:left-[209px]"
-                  aria-hidden="true"
-                />
-                <aside className="md:pt-1 md:text-right">
-                  <p className="font-mono text-[13px] tabular tracking-tight text-ink-faint">{exp.period}</p>
-                  <span
-                    className={cn(
-                      "mt-2 inline-block rounded-full px-3 py-1 font-mono text-[11px] font-medium tracking-tight",
-                      stage.className
-                    )}
-                  >
-                    {stage.label}
-                  </span>
-                </aside>
 
-                <div className="rounded-xl border bg-card p-6 card-hover md:p-7">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h3 className="text-lg font-bold tracking-tight">{exp.company}</h3>
-                    <span className="font-mono text-[12.5px] text-ink-faint">{exp.role}</span>
-                    {exp.type === "在职" && <Badge variant="solid">在职</Badge>}
+        <div>
+          {resumeData.experience.map((exp, idx) => (
+            <Reveal key={exp.company} delay={idx * 0.04}>
+              <article className="group grid gap-6 border-t border-rule py-9 md:grid-cols-12 md:gap-8 md:py-11">
+                {/* 左栏：时间轴 */}
+                <div className="md:col-span-3">
+                  <div className="flex items-center gap-3">
+                    <span className="relative flex size-2 items-center justify-center">
+                      <span className="absolute size-2 rounded-full bg-accent/20 transition-transform duration-300 group-hover:scale-[2.2]" />
+                      <span className="size-1.5 rounded-full bg-accent" />
+                    </span>
+                    <p className="font-mono text-[11.5px] tracking-[0.04em] text-ink-soft">
+                      {exp.period}
+                    </p>
                   </div>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-ink-faint">{exp.industry}</p>
-                  <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{exp.summary}</p>
-                  <ul className="mt-4 flex flex-col gap-2.5">
+                  <p className="eyebrow mt-3 md:mt-4">{exp.growth}</p>
+                  <p className="mt-3 inline-flex border border-ink/20 px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-faint">
+                    {exp.type}
+                  </p>
+                </div>
+
+                {/* 右栏：内容 */}
+                <div className="md:col-span-9">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="text-[21px] font-bold leading-tight tracking-tight md:text-[25px]">
+                      {exp.company}
+                    </h3>
+                    <span className="text-[12.5px] font-medium text-ink-faint">{exp.role}</span>
+                  </div>
+                  <p className="mt-2 max-w-[46rem] font-mono text-[10.5px] leading-relaxed tracking-[0.02em] text-ink-faint">
+                    {exp.industry}
+                  </p>
+                  <p className="mt-4 max-w-[46rem] text-[13.5px] leading-[1.85] text-ink">
+                    {exp.summary}
+                  </p>
+
+                  <ul className="mt-5 grid gap-x-10 gap-y-3 md:grid-cols-2">
                     {exp.bullets.map((b) => (
-                      <li key={b.lead} className="flex gap-2.5 text-[14px] leading-relaxed text-ink-soft">
-                        <span className="mt-[9px] inline-block size-[5px] shrink-0 rounded-full bg-ink/40" aria-hidden="true" />
-                        <span>
-                          <strong className="font-semibold text-ink">{b.lead}：</strong>
-                          {b.text}
-                        </span>
+                      <li
+                        key={b.lead}
+                        className="relative pl-4 text-[12.8px] leading-[1.8] text-ink-soft before:absolute before:left-0 before:top-[0.72em] before:h-px before:w-2 before:bg-accent/70"
+                      >
+                        <b className="font-semibold text-ink">{b.lead}：</b>
+                        {b.text}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+
+                  <div className="mt-5 flex flex-wrap gap-x-2 gap-y-2">
                     {exp.tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-md border border-border bg-muted/50 px-2 py-0.5 font-mono text-[11px] tracking-tight text-ink-soft"
+                        className="border border-rule bg-paper px-2 py-[3px] font-mono text-[9.5px] uppercase tracking-[0.08em] text-ink-faint transition-colors duration-200 group-hover:border-ink/25"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
                 </div>
-              </motion.article>
-            );
-          })}
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

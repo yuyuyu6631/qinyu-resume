@@ -1,139 +1,161 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { resumeData } from "@/lib/resume";
+import { PrintActions } from "@/components/print-actions";
 
 export const metadata: Metadata = {
-  title: "秦宇-测试工程师-A4打印版",
+  title: "秦宇 · 测试开发工程师 — A4 一页简历",
+  description: "秦宇的 A4 一页版简历：投递、打印与转存 PDF 用。",
   robots: { index: false, follow: false },
 };
 
 const b = resumeData.basics;
 
-/** A4 打印版简历（PDF 生成源）：克制排版、真实文本、ATS 可解析 */
+/** A4 一页打印版（PDF 生成源）：真实文本、ATS 可解析、单页 */
 export default function PrintPage() {
   return (
-    <main className="mx-auto max-w-[820px] px-4 py-8 text-[13.5px] leading-relaxed text-neutral-900">
-      <div className="no-print mb-5 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-2.5">
-        <p className="text-[12px] text-neutral-500">这是 A4 打印版简历，可直接「打印 / 另存为 PDF」。</p>
-        <Link
-          href="/"
-          className="shrink-0 font-mono text-[12px] text-neutral-500 underline-offset-4 transition-colors hover:text-neutral-900 hover:underline"
-        >
-          ← 返回网站
-        </Link>
-      </div>
+    <main className="a4-stage">
+      <PrintActions />
 
-      {/* 头部 */}
-      <header className="border-b-2 border-neutral-900 pb-3">
-        <h1 className="text-[30px] font-bold tracking-[0.2em]">{b.name}</h1>
-        <p className="mt-1 text-[14px] font-semibold">{b.brand.primary} · AI Testing · Automation · ATE / Semiconductor</p>
-        <p className="mt-1.5 text-[11.5px] text-neutral-600">
-          电话 {b.contact.phone} ｜ 邮箱 {b.contact.email} ｜ 男 · 22 岁 · 本科 · 1 年+测试 / 测试开发经验 ｜ 期望城市：{b.contact.location} ｜ {b.contact.availability}
-        </p>
-        <p className="mt-1 text-[11.5px] text-neutral-600">GitHub: {b.contact.github}</p>
-      </header>
-
-      {/* 定位 */}
-      <p className="print-avoid-break mt-3 rounded-sm border-l-[3px] border-neutral-900 bg-neutral-50 px-3 py-2 text-[12px]">
-        <strong>定位：</strong>
-        {b.positioning} {b.summary}
-      </p>
-
-      {/* 核心亮点 */}
-      <section className="print-avoid-break mt-4">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">核心亮点</h2>
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-1">
-          {resumeData.highlights.map((h) => (
-            <li key={h.label} className="text-[11.5px]">
-              <strong className="font-mono text-[12px]">{h.value}</strong> {h.label}（{h.sub}）
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 专业技能（能力地图压缩） */}
-      <section className="print-avoid-break mt-4">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">专业技能</h2>
-        <div className="flex flex-col gap-1">
-          {resumeData.capabilities.map((cap) => (
-            <p key={cap.name} className="text-[11.5px]">
-              <strong>{cap.name}</strong>
-              <span className="ml-1.5 rounded border border-neutral-400 px-1 text-[9.5px]">{cap.level}</span>
-              <span className="ml-1.5 text-neutral-700">{cap.techs.join(" / ")}</span>
+      <article className="a4-sheet">
+        {/* 页眉 */}
+        <header className="a4-head">
+          <div>
+            <h1 className="a4-name">
+              秦宇<em>.</em>
+            </h1>
+            <p className="a4-role">
+              {b.title} · TEST DEVELOPMENT ENGINEER · AI TESTING · AUTOMATION · ATE
             </p>
-          ))}
-        </div>
-      </section>
-
-      {/* 工作经历 */}
-      <section className="mt-4">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">工作经历</h2>
-        {resumeData.experience.map((exp) => (
-          <div key={exp.company} className="print-avoid-break mb-2.5">
-            <div className="flex items-baseline justify-between gap-3">
-              <p className="text-[13px] font-bold">
-                {exp.company}
-                <span className="ml-2 rounded bg-neutral-100 px-1.5 text-[10px] font-semibold text-neutral-700">
-                  {exp.role}
-                </span>
-              </p>
-              <p className="shrink-0 font-mono text-[10.5px] text-neutral-500">{exp.period}</p>
-            </div>
-            <p className="text-[10.5px] text-neutral-500">{exp.industry}</p>
-            <ul className="mt-0.5 list-none pl-4">
-              {exp.bullets.map((b2) => (
-                <li key={b2.lead} className="relative pl-3 text-[11.5px] text-neutral-800">
-                  <span className="absolute left-0 top-[7px] size-[5px] bg-neutral-900" aria-hidden="true" />
-                  <strong>{b2.lead}：</strong>
-                  {b2.text}
-                </li>
-              ))}
-            </ul>
           </div>
-        ))}
-      </section>
-
-      {/* 项目经历 */}
-      <section className="mt-3">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">项目经历</h2>
-        {resumeData.projects.map((p) => (
-          <div key={p.no} className="print-avoid-break mb-2.5">
-            <div className="flex items-baseline justify-between gap-3">
-              <p className="text-[12.5px] font-bold">
-                {p.title}
-                <span className="ml-2 rounded bg-neutral-100 px-1.5 text-[10px] font-semibold text-neutral-700">{p.badge}</span>
-              </p>
-              <p className="shrink-0 font-mono text-[10.5px] text-neutral-500">{p.period}</p>
+          <div className="a4-contact">
+            <div>
+              电话 {b.contact.phone} · 邮箱 {b.contact.email}
             </div>
-            <ul className="mt-0.5 list-none pl-4">
-              <li className="relative pl-3 text-[11.5px] text-neutral-800">
-                <span className="absolute left-0 top-[7px] size-[5px] bg-neutral-900" aria-hidden="true" />
-                <strong>问题与方法：</strong>
-                {p.problem} {p.approach}
-              </li>
-              {p.strategy.map((s) => (
-                <li key={s} className="relative pl-3 text-[11.5px] text-neutral-800">
-                  <span className="absolute left-0 top-[7px] size-[5px] bg-neutral-900" aria-hidden="true" />
-                  {s}
-                </li>
-              ))}
-              <li className="relative pl-3 text-[11.5px] text-neutral-800">
-                <span className="absolute left-0 top-[7px] size-[5px] bg-neutral-900" aria-hidden="true" />
-                <strong>结果：</strong>
-                {p.result}
-              </li>
-            </ul>
+            <div>
+              {b.contact.location} · 本科 · 软件工程 · {b.contact.availability}
+            </div>
+            <div>github.com/yuyuyu6631/qinyu-resume</div>
           </div>
-        ))}
-      </section>
+        </header>
 
-      {/* 教育 */}
-      <section className="print-avoid-break mt-3">
-        <h2 className="mb-1.5 border-l-[3px] border-neutral-900 pl-2 text-[14px] font-bold">教育</h2>
-        <p className="text-[11.5px]">
-          <strong>{resumeData.education.school}</strong> ｜ {resumeData.education.major} ｜ {resumeData.education.period}
+        {/* 定位 */}
+        <p className="a4-lead">
+          <b>定位｜</b>
+          {b.positioning} {b.summary}
         </p>
-      </section>
+
+        {/* 核心数据 */}
+        <dl className="a4-metrics">
+          {resumeData.highlights.map((h) => (
+            <div className="a4-metric" key={h.label}>
+              <dd>{h.value}</dd>
+              <dt>{h.short ?? h.label}</dt>
+            </div>
+          ))}
+        </dl>
+
+        {/* 专业技能 */}
+        <section className="a4-sec">
+          <h2 className="a4-sec-title">
+            <i>01</i>专业技能<span>capability</span>
+          </h2>
+          <div className="a4-two">
+            {resumeData.capabilities.map((cap) => (
+              <div className="a4-skill" key={cap.name}>
+                <b>{cap.name}</b>
+                <span>{cap.techs.join(" / ")}</span>
+              </div>
+            ))}
+          </div>
+          <p className="a4-skill-note">
+            主力方向：Test Development · Automation · AI Testing · Desktop Testing ｜ 其余为实际项目使用
+          </p>
+        </section>
+
+        {/* 工作经历 */}
+        <section className="a4-sec">
+          <h2 className="a4-sec-title">
+            <i>02</i>工作经历<span>experience</span>
+          </h2>
+          {resumeData.experience.map((exp) => (
+            <div className="a4-entry" key={exp.company}>
+              <div className="a4-entry-head">
+                <p className="a4-entry-title">
+                  {exp.company}
+                  <small>
+                    {exp.role} · {exp.type}
+                  </small>
+                </p>
+                <p className="a4-period">{exp.period}</p>
+              </div>
+              <p className="a4-entry-sub">{exp.industry}</p>
+              <ul className="a4-list">
+                {exp.bullets.map((bl) => (
+                  <li key={bl.lead}>
+                    <b>{bl.lead}：</b>
+                    {bl.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        {/* 项目经历（节选） */}
+        <section className="a4-sec">
+          <h2 className="a4-sec-title">
+            <i>03</i>项目经历<span>selected 3 / 4</span>
+          </h2>
+          {resumeData.projects
+            .filter((p) => p.no !== "01")
+            .map((p) => (
+            <div className="a4-entry" key={p.no}>
+              <div className="a4-entry-head">
+                <p className="a4-entry-title">
+                  {p.title}
+                  <small>
+                    {p.badge} · {p.category}
+                  </small>
+                </p>
+                <p className="a4-period">{p.period}</p>
+              </div>
+              <ul className="a4-list">
+                <li>
+                  <b>问题与方法：</b>
+                  {p.problem}
+                  {p.approach}
+                </li>
+                <li>
+                  <b>结果：</b>
+                  {p.result}
+                </li>
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        {/* 教育 */}
+        <section className="a4-sec">
+          <h2 className="a4-sec-title">
+            <i>04</i>教育背景<span>education</span>
+          </h2>
+          <div className="a4-entry-head">
+            <p className="a4-entry-title">
+              {resumeData.education.school}
+              <small>{resumeData.education.major}</small>
+            </p>
+            <p className="a4-period">{resumeData.education.period}</p>
+          </div>
+          <p className="a4-entry-sub">
+            荣誉：{resumeData.education.honors}｜证书：{resumeData.education.certificates}
+          </p>
+        </section>
+
+        <footer className="a4-foot">
+          <span>在线版 · yuyuyu6631.github.io/qinyu-resume</span>
+          <span>PDF / DOCX / ATS 与网站由同一份数据源生成</span>
+        </footer>
+      </article>
     </main>
   );
 }

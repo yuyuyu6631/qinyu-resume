@@ -1,54 +1,102 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Github, ExternalLink } from "lucide-react";
 import { resumeData } from "@/lib/resume";
+import { route } from "@/lib/asset";
+import { SectionHead } from "@/components/section-head";
+import { Reveal } from "@/components/ui/reveal";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
+/** 06 · 教育与可验证产出 */
 export function Proof() {
+  const edu = resumeData.education;
   const proof = resumeData.proof;
-  return (
-    <section id="proof" className="border-t bg-muted/40">
-      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-14"
-        >
-          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Selected Work</p>
-          <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">{proof.headline}</h2>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">{proof.desc}</p>
-        </motion.div>
+  const site = "https://yuyuyu6631.github.io/qinyu-resume/";
 
-        <motion.a
-          href={proof.github.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55, ease }}
-          className="group flex flex-col justify-between rounded-xl border bg-card p-6 card-hover md:flex-row md:items-center md:gap-8 md:p-8"
-        >
-          <div className="flex items-start gap-4">
-            <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-ink text-background">
-              <Github className="size-5" />
-            </span>
-            <div>
-              <h3 className="flex items-center gap-2 text-lg font-bold tracking-tight">
-                {proof.github.name}
-                <ExternalLink className="size-4 text-ink-faint transition-colors group-hover:text-ink" />
-              </h3>
-              <p className="mt-1.5 max-w-2xl text-[14px] leading-relaxed text-ink-faint">{proof.github.desc}</p>
+  return (
+    <section id="proof" className="border-b border-rule">
+      <div className="container-x section-pad">
+        <SectionHead
+          index="06"
+          en="education & proof / 教育"
+          title={
+            <>
+              学历是起点，
+              <br />
+              作品才是证明
+            </>
+          }
+          desc="教育背景、荣誉与证书如实列出；同时给出可以点开验证的源码与在线站点——这份简历本身就是作品。"
+          meta="2022 — 2026"
+        />
+
+        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+          {/* 教育 */}
+          <Reveal className="md:col-span-7">
+            <div className="border-t border-ink pt-5">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h3 className="text-[22px] font-bold tracking-tight md:text-[26px]">{edu.school}</h3>
+                <p className="font-mono text-[11px] tracking-[0.04em] text-ink-faint">{edu.period}</p>
+              </div>
+              <p className="mt-1.5 text-[13px] font-medium text-ink-soft">{edu.major}</p>
+              <p className="mt-4 max-w-[36rem] text-[12.8px] leading-[1.9] text-ink-soft">{edu.desc}</p>
+
+              <dl className="mt-6 space-y-3">
+                <div className="grid grid-cols-[4.5rem_1fr] gap-3 border-t border-rule pt-3">
+                  <dt className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-faint">
+                    荣誉
+                  </dt>
+                  <dd className="text-[12.5px] leading-[1.8] text-ink-soft">{edu.honors}</dd>
+                </div>
+                <div className="grid grid-cols-[4.5rem_1fr] gap-3 border-t border-rule pt-3">
+                  <dt className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-faint">
+                    证书
+                  </dt>
+                  <dd className="text-[12.5px] leading-[1.8] text-ink-soft">{edu.certificates}</dd>
+                </div>
+              </dl>
             </div>
-          </div>
-          <span className="mt-4 shrink-0 rounded-full border border-ink/25 px-3 py-1 font-mono text-[11.5px] tracking-tight text-ink-soft md:mt-0">
-            真实仓库 · 可查看源码
-          </span>
-        </motion.a>
+          </Reveal>
+
+          {/* 可验证产出 */}
+          <Reveal delay={0.08} className="md:col-span-5">
+            <div className="border border-rule bg-ink/[0.02] p-6 md:p-7">
+              <div className="flex items-baseline justify-between border-b border-ink pb-2">
+                <p className="eyebrow text-ink">{proof.headline}</p>
+                <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">
+                  verifiable
+                </span>
+              </div>
+              <h3 className="mt-5 font-mono text-[16px] font-bold tracking-tight">
+                {proof.github.name}
+                <span className="ml-2 text-[10px] font-normal uppercase tracking-[0.12em] text-ink-faint">
+                  github
+                </span>
+              </h3>
+              <p className="mt-3 text-[12.5px] leading-[1.85] text-ink-soft">{proof.github.desc}</p>
+              <div className="mt-5 space-y-2.5 border-t border-rule pt-4">
+                <a
+                  href={proof.github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-editorial flex w-full justify-between font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-soft hover:text-ink"
+                >
+                  source code <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href={site}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-editorial flex w-full justify-between font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-soft hover:text-ink"
+                >
+                  live site <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href={route("/print/")}
+                  className="link-editorial flex w-full justify-between font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-soft hover:text-ink"
+                >
+                  a4 one-pager <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

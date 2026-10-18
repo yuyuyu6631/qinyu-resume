@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import animate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: ["class"],
@@ -7,42 +6,68 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: { "2xl": "1120px" },
+      padding: { DEFAULT: "1.25rem", sm: "2rem", lg: "2.5rem" },
+      screens: { "2xl": "1280px" },
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
-        border: "hsl(var(--border))",
-        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
-        ink: { DEFAULT: "hsl(var(--ink))", soft: "hsl(var(--ink-soft))", faint: "hsl(var(--ink-faint))" },
+        paper: "hsl(var(--paper))",
+        background: "hsl(var(--paper))",
+        foreground: "hsl(var(--ink))",
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+          faint: "hsl(var(--ink-faint))",
+        },
+        rule: "hsl(var(--rule))",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          soft: "hsl(var(--accent-soft))",
+        },
+        muted: { DEFAULT: "hsl(var(--rule) / 0.45)", foreground: "hsl(var(--ink-faint))" },
+        border: "hsl(var(--rule))",
+        card: { DEFAULT: "hsl(var(--paper))", foreground: "hsl(var(--ink))" },
       },
-      borderRadius: { lg: "var(--radius)", md: "calc(var(--radius) - 2px)", sm: "calc(var(--radius) - 4px)" },
+      borderRadius: { DEFAULT: "2px", sm: "2px", md: "3px", lg: "4px", xl: "6px" },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "var(--font-noto-sans-sc)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
-        serif: ["var(--font-noto-serif-sc)", "serif"],
+        sans: [
+          "var(--font-geist-sans)",
+          "PingFang SC",
+          "Microsoft YaHei",
+          "Hiragino Sans GB",
+          "Source Han Sans SC",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: ["var(--font-geist-mono)", "SFMono-Regular", "Consolas", "monospace"],
+        serif: ["Songti SC", "SimSun", "Georgia", "serif"],
+      },
+      letterSpacing: {
+        tightest: "-0.045em",
+        label: "0.22em",
       },
       keyframes: {
         "fade-up": {
-          from: { opacity: "0", transform: "translateY(16px)" },
+          from: { opacity: "0", transform: "translateY(14px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "pulse-soft": {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "pulse-dot": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.35" },
         },
       },
       animation: {
         "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
-        "pulse-soft": "pulse-soft 2.4s ease-in-out infinite",
+        marquee: "marquee 38s linear infinite",
+        "pulse-dot": "pulse-dot 2.6s ease-in-out infinite",
       },
     },
   },
-  plugins: [animate],
+  plugins: [],
 };
 
 export default config;

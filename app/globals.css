@@ -4,51 +4,103 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
-    --ink: 0 0% 5%;
-    --ink-soft: 0 0% 18%;
-    --ink-faint: 0 0% 42%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 42%;
-    --border: 0 0% 90%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
-    --accent: 0 0% 5%;
-    --accent-foreground: 0 0% 100%;
-    --radius: 0.75rem;
+    /* 纸白 · 墨黑 · 朱红 —— 瑞士编辑风 */
+    --paper: 41 33% 93%;
+    --ink: 42 18% 8%;
+    --ink-soft: 38 9% 26%;
+    --ink-faint: 38 8% 45%;
+    --rule: 39 22% 81%;
+    --accent: 10 69% 43%;
+    --accent-soft: 12 46% 91%;
+    --radius: 3px;
   }
 
   * {
-    @apply border-border;
+    @apply border-rule;
   }
 
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    background: hsl(var(--paper));
   }
 
-  /* 锚点跳转时避开 sticky 导航（h-16） */
-  section[id] {
-    scroll-margin-top: 4.5rem;
+  section[id],
+  div[id] {
+    scroll-margin-top: 4.25rem;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-paper text-ink font-sans;
     text-wrap: pretty;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variant-numeric: tabular-nums;
   }
 
   ::selection {
-    @apply bg-ink text-background;
+    background: hsl(var(--accent));
+    color: hsl(var(--paper));
   }
 
-  /* 专注可见焦点 */
   :focus-visible {
-    outline: 2px solid hsl(var(--ink));
+    outline: 2px solid hsl(var(--accent));
     outline-offset: 3px;
-    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;
+  }
+
+  /* 小号等宽标签：INDEX / SECTION / META */
+  .eyebrow {
+    @apply font-mono text-[10.5px] uppercase leading-none tracking-label text-ink-faint;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .hairline-t {
+    @apply border-t border-rule;
+  }
+
+  /* 带下划线扫入的编辑风链接 */
+  .link-editorial {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 2px;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: background-size 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-editorial:hover {
+    background-size: 34% 1px;
+  }
+
+  .btn-ink {
+    @apply inline-flex items-center justify-center gap-2 bg-ink px-5 py-3 text-[13px] font-medium tracking-wide text-paper transition-colors duration-200;
+  }
+  .btn-ink:hover {
+    background: hsl(var(--accent));
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-ink/25 px-5 py-3 text-[13px] font-medium tracking-wide text-ink transition-colors duration-200;
+  }
+  .btn-outline:hover {
+    @apply border-ink bg-ink text-paper;
   }
 }
 
@@ -59,39 +111,310 @@
   .tabular {
     font-variant-numeric: tabular-nums;
   }
-  .grid-bg {
+
+  /* 细网格底纹：仅用于 hero */
+  .grid-lines {
     background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.55) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      linear-gradient(to right, hsl(var(--rule) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--rule) / 0.55) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 78%);
   }
-  .glow-dot {
-    background: radial-gradient(circle at center, hsl(var(--ink) / 0.14), transparent 70%);
+
+  .accent-dot::after {
+    content: "";
+    display: inline-block;
+    width: 0.34em;
+    height: 0.34em;
+    margin-left: 0.12em;
+    background: hsl(var(--accent));
+    border-radius: 999px;
+    vertical-align: 0.08em;
   }
-  .card-hover {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  }
-  .card-hover:hover {
-    border-color: hsl(var(--ink) / 0.28);
-    box-shadow: 0 12px 32px -12px hsl(var(--ink) / 0.12);
-    transform: translateY(-2px);
-  }
-  .hairline {
-    box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.06);
+
+  /* 被压缩的编辑风分隔标签 */
+  .meta-sep {
+    @apply mx-2 inline-block h-[9px] w-px translate-y-[1px] bg-rule align-middle;
   }
 }
 
-/* 打印页（/print）：A4 专用 */
+/* ───────────────────────────── A4 打印版 ───────────────────────────── */
+/* /print 页面：屏幕预览为真实 A4 纸张；打印时按 @page 输出单页 PDF */
+
+.a4-stage {
+  background: hsl(40 10% 88%);
+  min-height: 100dvh;
+  padding: 28px 16px 64px;
+}
+
+.a4-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 9mm 11mm 7mm;
+  background: #ffffff;
+  color: #17150f;
+  font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
+  font-size: 8.2pt;
+  line-height: 1.45;
+  box-shadow: 0 1px 0 hsl(40 20% 80%), 0 24px 60px -30px hsl(40 20% 40% / 0.55);
+}
+
+.a4-sheet h1,
+.a4-sheet h2,
+.a4-sheet h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* 页眉 */
+.a4-head {
+  border-bottom: 1.4pt solid #17150f;
+  padding-bottom: 1.7mm;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4mm;
+  align-items: end;
+}
+.a4-name {
+  font-size: 20pt;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+.a4-name em {
+  font-style: normal;
+  color: #b93a22;
+}
+.a4-role {
+  margin-top: 1.3mm;
+  font-size: 7.9pt;
+  letter-spacing: 0.05em;
+  color: #3f3b33;
+  font-weight: 600;
+}
+.a4-contact {
+  text-align: right;
+  font-size: 7.1pt;
+  line-height: 1.55;
+  color: #4a463d;
+}
+.a4-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 概要 */
+.a4-lead {
+  margin-top: 1.9mm;
+  font-size: 8.15pt;
+  line-height: 1.5;
+  color: #24211b;
+}
+.a4-lead b {
+  color: #17150f;
+}
+
+/* 数据条 */
+.a4-metrics {
+  margin-top: 1.9mm;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 0.6pt solid #d9d3c7;
+}
+.a4-metric {
+  padding: 1.1mm 2mm;
+  border-right: 0.6pt solid #d9d3c7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3mm;
+}
+.a4-metric:last-child {
+  border-right: 0;
+}
+.a4-metric dt {
+  font-size: 6.4pt;
+  letter-spacing: 0.03em;
+  color: #6b6558;
+}
+.a4-metric dd {
+  margin: 0;
+  font-size: 11.5pt;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #17150f;
+}
+
+/* 区块标题 */
+.a4-sec {
+  margin-top: 2.2mm;
+}
+.a4-sec-title {
+  display: flex;
+  align-items: baseline;
+  gap: 1.8mm;
+  border-bottom: 0.9pt solid #17150f;
+  padding-bottom: 0.7mm;
+  margin-bottom: 1.1mm;
+  font-size: 8.7pt;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+.a4-sec-title i {
+  font-style: normal;
+  font-family: "Consolas", "SFMono-Regular", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.1em;
+  color: #b93a22;
+  font-weight: 600;
+}
+.a4-sec-title span {
+  margin-left: auto;
+  font-family: "Consolas", monospace;
+  font-size: 6.3pt;
+  letter-spacing: 0.12em;
+  color: #8a8478;
+  font-weight: 400;
+}
+
+/* 经历 / 项目条目 */
+.a4-entry {
+  margin-bottom: 1.1mm;
+  break-inside: avoid;
+}
+.a4-entry:last-child {
+  margin-bottom: 0;
+}
+.a4-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 3mm;
+}
+.a4-entry-title {
+  font-size: 8.9pt;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.a4-entry-title small {
+  font-size: 6.9pt;
+  font-weight: 500;
+  color: #6b6558;
+  margin-left: 1.4mm;
+  letter-spacing: 0.02em;
+}
+.a4-period {
+  flex: none;
+  font-family: "Consolas", "SFMono-Regular", monospace;
+  font-size: 6.8pt;
+  color: #6b6558;
+  letter-spacing: 0.03em;
+}
+.a4-entry-sub {
+  font-size: 6.8pt;
+  color: #6b6558;
+  margin-top: 0.1mm;
+}
+.a4-list {
+  margin: 0.5mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+.a4-list li {
+  position: relative;
+  padding-left: 2.2mm;
+  font-size: 8pt;
+  line-height: 1.45;
+  color: #24211b;
+}
+.a4-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.32mm;
+  width: 0.9mm;
+  height: 0.9mm;
+  background: #b93a22;
+}
+.a4-list li b {
+  color: #17150f;
+  font-weight: 700;
+}
+
+/* 技能 / 两列 */
+.a4-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 5mm;
+}
+.a4-skill {
+  font-size: 7.35pt;
+  line-height: 1.4;
+  padding: 0.4mm 0;
+  border-bottom: 0.4pt dotted #ddd7ca;
+  display: flex;
+  gap: 1.4mm;
+  align-items: baseline;
+}
+.a4-skill b {
+  flex: none;
+  width: 22mm;
+  font-size: 6.9pt;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.a4-skill span {
+  flex: 1;
+  color: #3f3b33;
+}
+.a4-skill-note {
+  margin: 1.2mm 0 0;
+  font-size: 6.5pt;
+  letter-spacing: 0.02em;
+  color: #8a8478;
+}
+
+.a4-foot {
+  margin-top: 1.4mm;
+  border-top: 0.6pt solid #d9d3c7;
+  padding-top: 1.1mm;
+  display: flex;
+  justify-content: space-between;
+  gap: 4mm;
+  font-size: 6.3pt;
+  letter-spacing: 0.03em;
+  color: #8a8478;
+  font-family: "Consolas", "SFMono-Regular", monospace;
+}
+
+/* 打印：去掉屏幕装饰，按 CSS 纸张尺寸输出单页 */
 @media print {
   @page {
     size: A4;
-    margin: 11mm 13mm;
+    margin: 0;
   }
+  html,
   body {
-    font-size: 10.5pt;
-    line-height: 1.55;
-    color: #1a1a1a;
+    background: #ffffff !important;
+    margin: 0;
+    padding: 0;
+  }
+  .a4-stage {
+    padding: 0;
+    background: #ffffff;
+    min-height: 0;
+  }
+  .a4-sheet {
+    width: 210mm;
+    min-height: 0;
+    height: 297mm;
+    margin: 0;
+    padding: 9mm 11mm 7mm;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: hidden;
   }
   .no-print {
     display: none !important;
@@ -99,9 +422,6 @@
   a {
     color: inherit;
     text-decoration: none;
-  }
-  .print-avoid-break {
-    break-inside: avoid;
   }
 }
 

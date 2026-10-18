@@ -1,86 +1,97 @@
-"use client";
-
-import { motion } from "motion/react";
-import { ArrowRight, FlaskConical } from "lucide-react";
 import { resumeData } from "@/lib/resume";
+import { Reveal } from "@/components/ui/reveal";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
+/** 04 · AI 应用测试（深色反差区块） */
 export function AiLab() {
   const lab = resumeData.aiLab;
   return (
-    <section id="ai-lab" className="border-t bg-ink text-background">
-      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <div className="flex items-center gap-2.5">
-            <FlaskConical className="size-5 text-background/70" aria-hidden="true" />
-            <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-background/60">AI Testing Lab</p>
+    <section id="ai-lab" className="bg-ink text-paper">
+      <div className="container-x section-pad">
+        {/* 深色区块标题 */}
+        <header className="mb-10 md:mb-14">
+          <div className="flex items-baseline justify-between gap-6 border-b border-paper/30 pb-3">
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-[11px] leading-none text-accent">(04)</span>
+              <span className="font-mono text-[10.5px] uppercase leading-none tracking-label text-paper/50">
+                ai testing / 专项
+              </span>
+            </div>
+            <span className="hidden font-mono text-[10.5px] uppercase tracking-label text-paper/40 sm:block">
+              llm → agent → tool → output
+            </span>
           </div>
-          <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            AI 应用测试实践
-          </h2>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-background/70">
-            {lab.disclaimer}
-          </p>
-        </motion.div>
+          <div className="mt-6 grid gap-4 md:grid-cols-12 md:items-end">
+            <h2 className="text-[clamp(1.85rem,4.2vw,3.1rem)] font-extrabold leading-[1.04] tracking-tightest md:col-span-7">
+              AI 应用测试，
+              <br />
+              测的是<span className="text-accent">链路</span>而不是单点
+            </h2>
+            <p className="text-[13.5px] leading-[1.85] text-paper/65 md:col-span-4 md:col-start-9">
+              {lab.disclaimer}
+              从用户提问到最终展示，每一跳都可能出偏差；把链路拆开逐段验证，才能把 Badcase 归因到模型、工具还是数据。
+            </p>
+          </div>
+        </header>
 
-        {/* Pipeline */}
-        <div className="mt-12">
-          <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-0">
-            {lab.pipeline.map((stage, i) => (
-              <div key={stage.stage} className="flex flex-1 flex-col items-stretch">
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.09, ease }}
-                  className="flex h-full flex-col gap-1 rounded-lg border border-background/15 bg-background/[0.05] p-4 transition-colors duration-200 hover:border-background/40 hover:bg-background/[0.09]"
-                >
-                  <span className="font-mono text-[10.5px] tracking-[0.18em] text-background/45">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[15px] font-semibold tracking-tight">{stage.stage}</span>
-                  <span className="text-[11.5px] leading-snug text-background/55">{stage.detail}</span>
-                </motion.div>
-                {i < lab.pipeline.length - 1 && (
-                  <div className="hidden items-center justify-center py-0 lg:flex" aria-hidden="true">
-                    <ArrowRight className="mx-auto size-4 text-background/35" />
-                  </div>
-                )}
+        {/* 测试链路 */}
+        <Reveal>
+          <div className="grid grid-cols-2 border-l border-t border-paper/15 sm:grid-cols-4 lg:grid-cols-7">
+            {lab.pipeline.map((step, i) => (
+              <div
+                key={step.stage}
+                className="group relative border-b border-r border-paper/15 p-4 transition-colors duration-300 hover:bg-paper/[0.04] md:p-5"
+              >
+                <p className="font-mono text-[9px] tracking-[0.16em] text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="mt-4 text-[13px] font-bold tracking-tight">{step.stage}</p>
+                <p className="mt-1.5 text-[11px] leading-relaxed text-paper/55">{step.detail}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* 三个方向 */}
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-px bg-paper/15 md:grid-cols-3">
           {lab.directions.map((d, i) => (
-            <motion.div
-              key={d.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: i * 0.08, ease }}
-              className="rounded-xl border border-background/15 bg-background/[0.04] p-6"
+            <Reveal key={d.name} delay={0.05 * i} className="bg-ink">
+              <div className="flex h-full flex-col p-6 md:p-7">
+                <div className="flex items-baseline justify-between">
+                  <h3 className="text-[17px] font-bold tracking-tight text-paper">{d.name}</h3>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-paper/35">
+                    0{i + 1}
+                  </span>
+                </div>
+                <ul className="mt-4 flex-1 space-y-2">
+                  {d.points.map((pt) => (
+                    <li
+                      key={pt}
+                      className="relative pl-3.5 text-[12px] leading-[1.8] text-paper/65 before:absolute before:left-0 before:top-[0.66em] before:h-px before:w-1.5 before:bg-accent"
+                    >
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 border-t border-paper/15 pt-3 font-mono text-[9.5px] uppercase tracking-[0.1em] text-paper/40">
+                  {d.evidence}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* 方法覆盖 */}
+        <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-paper/40">
+            methods
+          </span>
+          {lab.methods.map((m) => (
+            <span
+              key={m}
+              className="border border-paper/20 px-2 py-1 text-[10.5px] tracking-wide text-paper/70"
             >
-              <h3 className="font-mono text-[14.5px] font-semibold tracking-tight">{d.name}</h3>
-              <ul className="mt-3.5 flex flex-col gap-2">
-                {d.points.map((pt) => (
-                  <li key={pt} className="flex gap-2 text-[13px] leading-relaxed text-background/70">
-                    <span className="mt-[8px] inline-block size-[5px] shrink-0 rounded-full bg-background/40" aria-hidden="true" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 border-t border-background/10 pt-3 font-mono text-[11px] text-background/45">
-                {d.evidence}
-              </p>
-            </motion.div>
+              {m}
+            </span>
           ))}
         </div>
       </div>
