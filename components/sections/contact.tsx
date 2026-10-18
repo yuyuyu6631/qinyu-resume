@@ -40,7 +40,7 @@ export function Contact() {
             交流<span className="text-accent">。</span>
           </h2>
           <p className="text-[13px] leading-[1.85] text-paper/60 md:col-span-4">
-            正在寻找深圳地区测试开发 / 测试工程师机会。
+            正在寻找{b.contact.location}地区测试开发 / 测试工程师机会。
             <br />
             简历可直接下载，也欢迎直接电话或邮件联系。
           </p>

@@ -10,6 +10,17 @@ export const metadata: Metadata = {
 
 const b = resumeData.basics;
 
+/** 一页版各经历的 bullet 取舍（网站保持全量） */
+function printBullets(company: string, bullets: { lead: string; text: string }[]) {
+  if (company.startsWith("长川")) return bullets.slice(0, 4); // 略去「流程与交付」
+  if (company.startsWith("北京零壹")) return bullets.filter((x) => x.lead !== "用例体系"); // 用例规模已在核心数据中
+  if (company.startsWith("湖南展通")) return bullets.slice(1, 3); // 保留「方案与用例 / 现场交付」
+  return bullets;
+}
+
+/** 一页版精选项目：当前 AOI 工作 + 自动化框架 + LLM-to-SQL */
+const selectedProjects = ["01", "05", "06"];
+
 /** A4 一页打印版（PDF 生成源）：真实文本、ATS 可解析、单页 */
 export default function PrintPage() {
   return (
@@ -24,7 +35,7 @@ export default function PrintPage() {
               秦宇<em>.</em>
             </h1>
             <p className="a4-role">
-              {b.title} · TEST DEVELOPMENT ENGINEER · AI TESTING · AUTOMATION · ATE
+              {b.title} · {b.brand.primary} · {b.brand.subs.join(" · ")}
             </p>
           </div>
           <div className="a4-contact">
@@ -90,7 +101,7 @@ export default function PrintPage() {
               </div>
               <p className="a4-entry-sub">{exp.industry}</p>
               <ul className="a4-list">
-                {exp.bullets.map((bl) => (
+                {printBullets(exp.company, exp.bullets).map((bl) => (
                   <li key={bl.lead}>
                     <b>{bl.lead}：</b>
                     {bl.text}
@@ -104,10 +115,10 @@ export default function PrintPage() {
         {/* 项目经历（节选） */}
         <section className="a4-sec">
           <h2 className="a4-sec-title">
-            <i>03</i>项目经历<span>selected 3 / 4</span>
+            <i>03</i>项目经历<span>selected 3 / 6</span>
           </h2>
           {resumeData.projects
-            .filter((p) => p.no !== "01")
+            .filter((p) => selectedProjects.includes(p.no))
             .map((p) => (
             <div className="a4-entry" key={p.no}>
               <div className="a4-entry-head">

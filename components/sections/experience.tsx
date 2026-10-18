@@ -14,10 +14,10 @@ export function Experience() {
             <>
               从软件测试到
               <br />
-              AI Testing 与 ATE
+              AI Testing 与半导体设备
             </>
           }
-          desc="三段经历，一条清晰的成长线：企业数字化系统 → AI 智能体平台测试开发 → 半导体 ATE 上位机测试。每段都有独立的负责范围与交付物。"
+          desc="四段经历，一条清晰的成长线：企业数字化系统 → AI 智能体平台测试开发 → ATE 上位机 → AOI 光学检测设备软件。每段都有独立的负责范围与交付物。"
           meta="2025.07 — present"
         />
 

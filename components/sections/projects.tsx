@@ -12,13 +12,13 @@ export function Projects() {
           en="selected cases / 项目"
           title={
             <>
-              四个真实项目，
+              六个真实项目，
               <br />
-              四种测试难题
+              六种测试难题
             </>
           }
           desc="只放能讲清楚「问题—方法—结果」的项目。每个案例都包含可复现的执行路径，而不是一句「负责测试」。"
-          meta="4 cases · 2025.10 — present"
+          meta="6 cases · 2025.10 — present"
         />
 
         <div className="border-t border-rule">

@@ -8,7 +8,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const file = [
   ["岗位", "测试开发工程师"],
-  ["经验", "1 年+ · 软件测试 → 测试开发 → ATE"],
+  ["经验", "1 年+ · 软件测试 → 测试开发 → 半导体设备"],
   ["城市", resumeData.basics.contact.location],
   ["到岗", resumeData.basics.contact.availability],
   ["学历", "本科 · 软件工程"],
@@ -32,7 +32,7 @@ export function Hero() {
         >
           <p className="eyebrow flex items-center gap-2">
             <span className="size-1.5 rounded-full bg-accent animate-pulse-dot" aria-hidden="true" />
-            open to opportunities · shenzhen
+            open to opportunities · {b.contact.location}
           </p>
           <p className="eyebrow hidden sm:block">resume / 2026 — qin yu</p>
         </motion.div>
