@@ -51,13 +51,13 @@ export function Contact() {
               className="group flex flex-col gap-3 bg-ink p-6 transition-colors duration-200 hover:bg-background/[0.07]"
             >
               <it.icon className="size-5 text-background/60 transition-colors group-hover:text-background" />
-              <span className="font-mono text-[10.5px] tracking-[0.2em] text-background/45">{it.label}</span>
+              <span className="font-mono text-[10.5px] tracking-[0.2em] text-background/65">{it.label}</span>
               <span className="break-all text-[14.5px] font-semibold tracking-tight">{it.value}</span>
             </a>
           ))}
         </motion.div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-background/12 pt-6 text-[12px] text-background/40 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-background/12 pt-6 text-[12px] text-background/65 md:flex-row md:items-center md:justify-between">
           <p>
             © 2026 {b.name} — {b.brand.primary} · AI Testing · Automation · AOI / ATE
           </p>

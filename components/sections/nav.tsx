@@ -1,21 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X, Download, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { resumeData } from "@/lib/resume";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 const links = [
   { href: "#experience", label: "经历" },
   { href: "#projects", label: "项目" },
-  { href: "#ai-lab", label: "AI Lab" },
+  { href: "#ai-lab", label: "AI 测试" },
   { href: "#capabilities", label: "能力" },
-  { href: "#proof", label: "证明" },
+  { href: "#proof", label: "作品" },
   { href: "#contact", label: "联系" },
 ];
 
 export function Nav() {
+  const menuButton = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("");
@@ -29,7 +30,9 @@ export function Nav() {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -58,26 +61,27 @@ export function Nav() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="回到顶部">
+        <a href="#top" className="flex items-center gap-2.5" aria-label="秦宇，回到顶部">
           <span className="grid size-8 place-items-center rounded-full bg-ink font-sans text-[13px] font-semibold text-background">
             {resumeData.basics.name.slice(0, 1)}
           </span>
-          <span className="hidden text-sm font-semibold tracking-tight sm:block">
+          <span className="text-sm font-semibold tracking-tight">
             {resumeData.basics.name}
-            <span className="ml-2 font-mono text-xs font-normal text-ink-faint">
+            <span className="ml-2 hidden font-mono text-xs font-normal text-ink-faint xl:inline">
               {resumeData.basics.brand.primary}
             </span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="主导航">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="主导航">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
+              aria-current={active === l.href ? "location" : undefined}
               className={cn(
-                "text-[13.5px] transition-colors duration-150",
-                active === l.href ? "text-ink" : "text-ink-faint hover:text-ink"
+                "inline-flex min-h-11 items-center rounded-lg px-3 text-[13.5px] transition-colors duration-150",
+                active === l.href ? "bg-accent/10 font-semibold text-accent" : "text-ink-faint hover:bg-muted hover:text-ink"
               )}
             >
               {l.label}
@@ -91,18 +95,17 @@ export function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub 仓库"
-            className="grid size-10 place-items-center rounded-full text-ink-faint transition-colors hover:bg-muted hover:text-ink"
+            className="hidden size-11 place-items-center rounded-full sm:grid text-ink-faint transition-colors hover:bg-muted hover:text-ink"
           >
             <Github className="size-[18px]" />
           </a>
-          <Button size="sm" variant="outline" className="hidden sm:inline-flex">
-            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/秦宇-测试工程师.pdf`} download className="flex items-center gap-2">
-              <Download className="size-3.5" />
-              下载简历
-            </a>
-          </Button>
+          <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/秦宇-测试工程师.pdf`} download className={buttonVariants({ size: "default", variant: "outline", className: "min-h-11 rounded-lg px-3 text-xs sm:px-4 sm:text-sm" })}>
+            <Download className="size-4" aria-hidden="true" /> 下载简历
+          </a>
           <button
-            className="grid size-10 place-items-center rounded-full text-ink transition-colors hover:bg-muted md:hidden"
+            ref={menuButton}
+            aria-controls="mobile-navigation"
+            className="grid size-11 place-items-center rounded-lg text-ink transition-colors hover:bg-muted lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "关闭菜单" : "打开菜单"}
@@ -112,9 +115,10 @@ export function Nav() {
         </div>
       </div>
 
-      {open && (
-        <nav
-          className="border-t bg-background/95 px-5 py-4 backdrop-blur-md md:hidden"
+      <nav
+          hidden={!open}
+          className="border-t bg-background/95 px-5 py-4 backdrop-blur-md lg:hidden"
+          id="mobile-navigation"
           aria-label="移动端导航"
         >
           <ul className="flex flex-col gap-1">
@@ -123,7 +127,7 @@ export function Nav() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-md px-3 py-2.5 text-[15px] text-ink-soft transition-colors hover:bg-muted"
+                  className="block rounded-md px-3 py-2.5 text-[15px] text-ink-soft min-h-11 transition-colors hover:bg-muted"
                 >
                   {l.label}
                 </a>
@@ -141,7 +145,6 @@ export function Nav() {
             </li>
           </ul>
         </nav>
-      )}
     </header>
   );
 }

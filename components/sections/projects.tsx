@@ -1,97 +1,42 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useState } from "react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { resumeData } from "@/lib/resume";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const filters = ["全部项目", "设备软件", "AI 应用", "自动化", "测试工具"] as const;
+type Filter = (typeof filters)[number];
+function category(value: string): Filter {
+  if (/Tooling/.test(value)) return "测试工具";
+  if (/AOI|ATE/.test(value)) return "设备软件";
+  if (/AI/.test(value)) return "AI 应用";
+  return "自动化";
+}
 
 export function Projects() {
+  const [selected, setSelected] = useState<Filter>("全部项目");
+  const projects = resumeData.projects.filter(p => selected === "全部项目" || category(p.category) === selected);
   return (
-    <section id="projects" className="border-t bg-muted/40">
-      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-14"
-        >
-          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Case Studies</p>
-          <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">代表性项目</h2>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">
-            以工程案例的方式呈现：问题、技术方案与结果。
-          </p>
-        </motion.div>
-
-        <div className="flex flex-col gap-6">
-          {resumeData.projects.map((p, i) => (
-            <motion.article
-              key={p.no}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease }}
-              className="group rounded-xl border bg-card card-hover"
-            >
-              <div className="grid gap-6 p-6 md:grid-cols-[240px_1fr] md:gap-8 md:p-8">
-                {/* 左侧：编号 + 元信息 */}
-                <div className="md:border-r md:pr-8">
-                  <div className="flex items-center justify-between md:block">
-                    <span className="font-mono text-[13px] font-medium tracking-[0.15em] text-ink-faint">
-                      {p.no}
-                    </span>
-                    <span className="font-mono text-[11px] tabular tracking-tight text-ink-faint md:mt-3 md:block">
-                      {p.period}
-                    </span>
-                  </div>
-                  <p className="mt-4 font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-faint">
-                    {p.category}
-                  </p>
-                  <Badge variant="outline" className="mt-3">
-                    {p.badge}
-                  </Badge>
-                </div>
-
-                {/* 右侧：案例内容 */}
-                <div>
-                  <h3 className="text-xl font-bold tracking-tight">{p.title}</h3>
-                  <div className="mt-4 flex flex-col gap-3.5 text-[14px] leading-relaxed text-ink-soft">
-                    <p>
-                      <strong className="font-semibold text-ink">Problem · </strong>
-                      {p.problem}
-                    </p>
-                    <div>
-                      <strong className="font-semibold text-ink">Technical Approach · </strong>
-                      <p className="mt-1">{p.approach}</p>
-                      <ul className="mt-1.5 flex flex-col gap-1.5">
-                        {p.strategy.map((s) => (
-                          <li key={s} className="flex gap-2.5">
-                            <span className="mt-[9px] inline-block size-[5px] shrink-0 rounded-full bg-ink/40" aria-hidden="true" />
-                            {s}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p>
-                      <strong className="font-semibold text-ink">Result · </strong>
-                      {p.result}
-                    </p>
-                  </div>
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {p.technology.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] tracking-tight text-ink-soft transition-colors group-hover:border-ink/30"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+    <section id="projects" className="border-y bg-muted/50">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div><p className="section-kicker">02 / SELECTED PROJECTS</p><h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">项目里的测试实践</h2><p className="mt-4 max-w-xl text-sm leading-7 text-ink-faint">从设备软件到 AI 应用，查看问题、验证方法与交付结果。</p></div>
+          <a href="#contact" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-accent hover:underline underline-offset-4">交流项目细节<ArrowUpRight className="size-4" aria-hidden="true" /></a>
+        </div>
+        <div role="group" aria-label="按项目方向筛选" className="mt-8 flex flex-wrap gap-2">
+          {filters.map(filter => <button key={filter} type="button" aria-pressed={selected === filter} onClick={() => setSelected(filter)} className={cn("min-h-11 rounded-full border px-5 text-sm font-medium transition-colors", selected === filter ? "border-ink bg-ink text-white" : "bg-card text-ink-soft hover:border-accent/50 hover:text-accent")}>{filter}</button>)}
+        </div>
+        <p role="status" className="mt-4 text-xs text-ink-faint">{selected} · {projects.length} 个项目</p>
+        <div className="mt-5 grid items-start gap-5 lg:grid-cols-2">
+          {projects.map(p => <article key={p.no} className="project-card min-w-0 rounded-2xl border bg-card p-6 md:p-7">
+            <div className="flex flex-wrap items-center justify-between gap-2"><span className="font-mono text-xs font-medium text-accent">{p.no} / {category(p.category)}</span><span className="font-mono text-xs text-ink-faint">{p.period}</span></div>
+            <h3 className="mt-5 text-xl font-semibold leading-snug tracking-tight">{p.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-ink-faint">{p.problem}</p>
+            <div className="mt-5 flex items-start gap-2.5 rounded-xl bg-accent/[0.06] p-4 text-sm leading-7 text-ink-soft"><Check className="mt-1.5 size-4 shrink-0 text-accent" aria-hidden="true" /><p><span className="font-semibold text-ink">交付与结果</span><br />{p.result}</p></div>
+            <div className="mt-5 flex flex-wrap gap-2">{p.technology.map(t => <span key={t} className="rounded-md bg-muted px-2.5 py-1 text-xs leading-5 text-ink-soft">{t}</span>)}</div>
+            <details className="group mt-5 border-t pt-2"><summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-ink hover:text-accent"><span>查看测试方法</span><ArrowDown className="size-4 transition-transform group-open:rotate-180" aria-hidden="true" /></summary><div className="pb-2 pt-2 text-sm leading-7 text-ink-soft"><p>{p.approach}</p><ul className="mt-4 space-y-2">{p.strategy.map(s => <li key={s} className="flex gap-3"><span className="mt-3 size-1 shrink-0 rounded-full bg-accent" aria-hidden="true" /><span>{s}</span></li>)}</ul></div></details>
+          </article>)}
         </div>
       </div>
     </section>

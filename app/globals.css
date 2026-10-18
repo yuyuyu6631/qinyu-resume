@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
-    --ink: 0 0% 5%;
-    --ink-soft: 0 0% 18%;
-    --ink-faint: 0 0% 42%;
-    --muted: 0 0% 96%;
+    --background: 40 33% 98%;
+    --foreground: 222 34% 14%;
+    --ink: 222 34% 14%;
+    --ink-soft: 220 17% 29%;
+    --ink-faint: 220 11% 43%;
+    --muted: 225 24% 95%;
     --muted-foreground: 0 0% 42%;
-    --border: 0 0% 90%;
+    --border: 222 20% 87%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 5%;
-    --accent: 0 0% 5%;
+    --accent: 229 71% 49%;
     --accent-foreground: 0 0% 100%;
     --radius: 0.75rem;
   }
@@ -30,7 +30,7 @@
   }
 
   /* 锚点跳转时避开 sticky 导航（h-16） */
-  section[id] {
+  section[id], footer[id] {
     scroll-margin-top: 4.5rem;
   }
 
@@ -41,12 +41,12 @@
   }
 
   ::selection {
-    @apply bg-ink text-background;
+    @apply bg-accent text-white;
   }
 
   /* 专注可见焦点 */
   :focus-visible {
-    outline: 2px solid hsl(var(--ink));
+    outline: 3px solid hsl(var(--accent));
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -107,6 +107,7 @@
 
 /* 减少动效偏好 */
 @media (prefers-reduced-motion: reduce) {
+  [style*="opacity:"] { opacity: 1 !important; transform: none !important; }
   *,
   *::before,
   *::after {
@@ -116,3 +117,19 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Shared visual rhythm; content and downloads keep their own semantics. */
+@layer components {
+  .section-kicker { @apply font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent; }
+  .hero-surface { background: radial-gradient(ellipse at 95% 20%, hsl(229 70% 94% / .7), transparent 48%), hsl(var(--background)); }
+  .hero-profile { position: relative; }
+  .hero-profile::before { content: ""; position: absolute; top: -1px; left: 2rem; right: 2rem; height: 3px; border-radius: 2px; background: hsl(var(--accent)); }
+  .project-card { transition: border-color 180ms ease, box-shadow 180ms ease; }
+  .project-card:hover { border-color: hsl(var(--accent) / .35); box-shadow: 0 12px 36px -28px hsl(var(--ink) / .3); }
+  .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; border-radius: .5rem; background: hsl(var(--ink)); color: white; padding: .8rem 1rem; }
+  .skip-link:focus { top: 1rem; }
+}
+@media print { .hero-orbit { display: none; } }
+
+#ai-lab :focus-visible, #contact :focus-visible { outline-color: hsl(229 90% 80%); }
+@media print { body { background: white !important; } }

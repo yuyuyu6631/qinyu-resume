@@ -18,7 +18,7 @@ export function Proof() {
           transition={{ duration: 0.6, ease }}
           className="mb-14"
         >
-          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Selected Work</p>
+          <p className="section-kicker">Selected Work</p>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">{proof.headline}</h2>
           <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">{proof.desc}</p>
         </motion.div>

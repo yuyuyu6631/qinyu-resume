@@ -22,7 +22,7 @@ const config: Config = {
       },
       borderRadius: { lg: "var(--radius)", md: "calc(var(--radius) - 2px)", sm: "calc(var(--radius) - 4px)" },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "var(--font-noto-sans-sc)", "system-ui", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
         serif: ["var(--font-noto-serif-sc)", "serif"],
       },
