@@ -11,8 +11,9 @@ import { Contact } from "@/components/sections/contact";
 export default function Home() {
   return (
     <>
+      <a href="#main-content" className="skip-link">跳至主要内容</a>
       <Nav />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Experience />
         <Projects />

@@ -147,14 +147,11 @@ def main():
         set_font(p.add_run(text))
         keep_together(p)
 
-    # 核心亮点
-    section("核心亮点")
-    for h in R["highlights"]:
-        bullet("", f"{h['value']} {h['label']}（{h['sub']}）")
-
     # 专业技能（能力地图）
     section("专业技能")
     for cap in R["capabilities"]:
+        if cap["name"] not in {"Test Development", "Automation", "API Testing", "AI Testing", "AOI Equipment Testing", "SQL & Data"}:
+            continue
         p = doc.add_paragraph()
         p.paragraph_format.space_after = Pt(2)
         set_font(p.add_run(f"{cap['name']} "), bold=True)
@@ -182,7 +179,10 @@ def main():
 
     # 项目经历
     section("项目经历")
+    # 投递版突出工具建设与 AI 测试，完整案例保留在网站。
     for pr in R["projects"]:
+        if pr["category"] != "Test Tooling" and "Text-to-SQL" not in pr["category"] and "LLM-to-SQL" not in pr["category"]:
+            continue
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(5)
         p.paragraph_format.space_after = Pt(1)
@@ -191,9 +191,7 @@ def main():
         set_font(p.add_run(pr["period"]), size=9.5, color=MUTED)
         keep_together(p)
         p.paragraph_format.keep_with_next = True
-        bullet("问题与方法", f"{pr['problem']} {pr['approach']}")
-        for s in pr["strategy"]:
-            bullet("", s)
+        bullet("测试实践", pr["approach"])
         bullet("结果", pr["result"])
 
     # 教育

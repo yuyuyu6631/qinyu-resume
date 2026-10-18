@@ -22,9 +22,9 @@ export function Experience() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease }}
-        className="mb-14"
+        className="mb-10"
       >
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Career Evolution</p>
+        <p className="section-kicker">01 / EXPERIENCE</p>
         <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
           从 AI 应用测试到半导体设备软件
         </h2>
@@ -68,7 +68,7 @@ export function Experience() {
                   </span>
                 </aside>
 
-                <div className="rounded-xl border bg-card p-6 card-hover md:p-7">
+                <div className={cn("rounded-2xl border bg-card p-6 md:p-7", exp.type === "在职" && "border-accent/30 ring-4 ring-accent/[0.03]")}>
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <h3 className="text-lg font-bold tracking-tight">{exp.company}</h3>
                     <span className="font-mono text-[12.5px] text-ink-faint">{exp.role}</span>

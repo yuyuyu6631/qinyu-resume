@@ -41,7 +41,7 @@ export function AiLab() {
                   transition={{ duration: 0.5, delay: i * 0.09, ease }}
                   className="flex h-full flex-col gap-1 rounded-lg border border-background/15 bg-background/[0.05] p-4 transition-colors duration-200 hover:border-background/40 hover:bg-background/[0.09]"
                 >
-                  <span className="font-mono text-[10.5px] tracking-[0.18em] text-background/45">
+                  <span className="font-mono text-[10.5px] tracking-[0.18em] text-background/65">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[15px] font-semibold tracking-tight">{stage.stage}</span>
@@ -77,7 +77,7 @@ export function AiLab() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 border-t border-background/10 pt-3 font-mono text-[11px] text-background/45">
+              <p className="mt-4 border-t border-background/10 pt-3 font-mono text-[11px] text-background/65">
                 {d.evidence}
               </p>
             </motion.div>
