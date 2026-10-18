@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const stageLabel: Record<string, { label: string; className: string }> = {
+  "AOI / Equipment Software": { label: "04 · AOI / Equipment Software", className: "bg-ink text-background" },
   "Software Testing": { label: "01 · Software Testing", className: "bg-muted text-ink-soft" },
   "AI Testing": { label: "02 · Test Development · AI Testing", className: "bg-ink text-background" },
   "Windows Desktop / ATE": { label: "03 · Test Development · ATE / Desktop", className: "bg-ink text-background" },
@@ -25,10 +26,10 @@ export function Experience() {
       >
         <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-faint">Career Evolution</p>
         <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-          从软件测试到 AI Testing 与 ATE
+          从 AI 应用测试到半导体设备软件
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-faint">
-          软件测试 → 测试开发 → AI 应用测试 → 半导体 ATE。
+          软件测试 → AI 应用测试 → ATE 上位机 → AOI 设备软件。
         </p>
       </motion.div>
 

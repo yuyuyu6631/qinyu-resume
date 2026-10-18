@@ -30,7 +30,7 @@ export function Contact() {
             期待与您交流
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-background/70">
-            正在寻找深圳地区测试开发 / AI 测试方向岗位。
+            欢迎交流测试开发、AI 应用测试与半导体设备软件测试实践。
           </p>
         </motion.div>
 
@@ -59,11 +59,11 @@ export function Contact() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-background/12 pt-6 text-[12px] text-background/40 md:flex-row md:items-center md:justify-between">
           <p>
-            © 2026 {b.name} — {b.brand.primary} · AI Testing · Automation · ATE / Semiconductor
+            © 2026 {b.name} — {b.brand.primary} · AI Testing · Automation · AOI / ATE
           </p>
           <p className="flex items-center gap-1.5">
             <MapPin className="size-3.5" aria-hidden="true" />
-            深圳 · Shenzhen · {b.contact.availability}
+            {b.contact.location} · {b.contact.availability}
           </p>
         </div>
       </div>

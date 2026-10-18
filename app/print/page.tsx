@@ -26,9 +26,9 @@ export default function PrintPage() {
       {/* 头部 */}
       <header className="border-b-2 border-neutral-900 pb-3">
         <h1 className="text-[30px] font-bold tracking-[0.2em]">{b.name}</h1>
-        <p className="mt-1 text-[14px] font-semibold">{b.brand.primary} · AI Testing · Automation · ATE / Semiconductor</p>
+        <p className="mt-1 text-[14px] font-semibold">{b.brand.primary} · {b.brand.subs.join(" · ")}</p>
         <p className="mt-1.5 text-[11.5px] text-neutral-600">
-          电话 {b.contact.phone} ｜ 邮箱 {b.contact.email} ｜ 男 · 22 岁 · 本科 · 1 年+测试 / 测试开发经验 ｜ 期望城市：{b.contact.location} ｜ {b.contact.availability}
+          电话 {b.contact.phone} ｜ 邮箱 {b.contact.email} ｜ 本科 · 1 年+测试 / 测试开发经验 ｜ 现居：{b.contact.location} ｜ {b.contact.availability}
         </p>
         <p className="mt-1 text-[11.5px] text-neutral-600">GitHub: {b.contact.github}</p>
       </header>
